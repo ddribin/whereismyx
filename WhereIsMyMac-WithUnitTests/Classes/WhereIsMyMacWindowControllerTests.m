@@ -109,6 +109,7 @@ id mockLocationManager = nil;
 	STAssertEquals(postRetainCount, preRetainCount, @"Location manager not released");
 	
 	windowController = nil;
+	[mockLocationManager release];
 }
 
 @end
