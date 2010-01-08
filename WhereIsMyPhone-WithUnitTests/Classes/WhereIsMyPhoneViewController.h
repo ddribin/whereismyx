@@ -15,6 +15,8 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 
+@class CoreLocationFormatter;
+
 @interface WhereIsMyPhoneViewController : UIViewController <CLLocationManagerDelegate>
 {
 	IBOutlet UIWebView *webView;
@@ -22,6 +24,7 @@
 	IBOutlet UILabel *locationLabel;
 	IBOutlet UILabel *accuracyLabel;
 	IBOutlet UIButton *openInBrowserButton;
+	CoreLocationFormatter *locationFormatter;
 }
 
 - (IBAction)openInDefaultBrowser:(id)sender;

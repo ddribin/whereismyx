@@ -15,6 +15,9 @@
 		2899E5220DE3E06400AC0155 /* WhereIsMyPhoneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E5210DE3E06400AC0155 /* WhereIsMyPhoneViewController.xib */; };
 		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		28D7ACF80DDB3853001CB0EB /* WhereIsMyPhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* WhereIsMyPhoneViewController.m */; };
+		55A1A03310F6FA690020688E /* CoreLocationFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 55A1A03210F6FA690020688E /* CoreLocationFormatter.m */; };
+		55A1A03410F6FA690020688E /* CoreLocationFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 55A1A03210F6FA690020688E /* CoreLocationFormatter.m */; };
+		55A1A03510F6FA690020688E /* CoreLocationFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 55A1A03210F6FA690020688E /* CoreLocationFormatter.m */; };
 		C901D56310DDE69200E72C90 /* WhereIsMyPhoneAppDelegateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C901D53B10DDE48800E72C90 /* WhereIsMyPhoneAppDelegateTests.m */; };
 		C901D59410DDE74A00E72C90 /* NSInvocation+OCMAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C901D4BD10DDE38300E72C90 /* NSInvocation+OCMAdditions.m */; };
 		C901D59510DDE74A00E72C90 /* NSMethodSignature+OCMAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C901D4BF10DDE38300E72C90 /* NSMethodSignature+OCMAdditions.m */; };
@@ -123,6 +126,8 @@
 		28D7ACF70DDB3853001CB0EB /* WhereIsMyPhoneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WhereIsMyPhoneViewController.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* WhereIsMyPhone_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WhereIsMyPhone_Prefix.pch; sourceTree = "<group>"; };
+		55A1A03110F6FA690020688E /* CoreLocationFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreLocationFormatter.h; sourceTree = "<group>"; };
+		55A1A03210F6FA690020688E /* CoreLocationFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreLocationFormatter.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* WhereIsMyPhone-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "WhereIsMyPhone-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		C901D4BC10DDE38300E72C90 /* NSInvocation+OCMAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSInvocation+OCMAdditions.h"; path = "OCMock/NSInvocation+OCMAdditions.h"; sourceTree = "<group>"; };
 		C901D4BD10DDE38300E72C90 /* NSInvocation+OCMAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSInvocation+OCMAdditions.m"; path = "OCMock/NSInvocation+OCMAdditions.m"; sourceTree = "<group>"; };
@@ -230,6 +235,8 @@
 				1D3623250D0F684500981E51 /* WhereIsMyPhoneAppDelegate.m */,
 				28D7ACF60DDB3853001CB0EB /* WhereIsMyPhoneViewController.h */,
 				28D7ACF70DDB3853001CB0EB /* WhereIsMyPhoneViewController.m */,
+				55A1A03110F6FA690020688E /* CoreLocationFormatter.h */,
+				55A1A03210F6FA690020688E /* CoreLocationFormatter.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -515,6 +522,7 @@
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* WhereIsMyPhoneAppDelegate.m in Sources */,
 				28D7ACF80DDB3853001CB0EB /* WhereIsMyPhoneViewController.m in Sources */,
+				55A1A03310F6FA690020688E /* CoreLocationFormatter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -575,6 +583,7 @@
 				C97E754A10E6EA8D00CB9E83 /* OCPartialMockRecorder.m in Sources */,
 				C97E754B10E6EA8D00CB9E83 /* OCProtocolMockObject.m in Sources */,
 				C97E754C10E6EA8D00CB9E83 /* NSObject+SupersequentImplementation.m in Sources */,
+				55A1A03410F6FA690020688E /* CoreLocationFormatter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -585,6 +594,7 @@
 				C9849A3310DEEFA600411F31 /* main.m in Sources */,
 				C907BDB010DF3C860096B9A5 /* WhereIsMyPhoneAppDelegate.m in Sources */,
 				C9849A3510DEEFA600411F31 /* WhereIsMyPhoneViewController.m in Sources */,
+				55A1A03510F6FA690020688E /* CoreLocationFormatter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

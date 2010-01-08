@@ -13,6 +13,7 @@
 //
 
 #import "WhereIsMyPhoneViewController.h"
+#import "CoreLocationFormatter.h"
 
 @implementation WhereIsMyPhoneViewController
 
@@ -21,6 +22,13 @@
 	locationManager = [[CLLocationManager alloc] init];
 	locationManager.delegate = self;
 	[locationManager startUpdatingLocation];
+	NSString * formatString = [NSString 
+							   stringWithContentsOfFile:
+							   [[NSBundle bundleForClass:[self class]]
+								pathForResource:@"HTMLFormatString" ofType:@"html"]
+							   encoding:NSUTF8StringEncoding
+							   error:NULL];
+	locationFormatter = [[CoreLocationFormatter alloc] initWithFormatString:formatString];
 }
 
 - (NSString *)nibName
@@ -28,35 +36,20 @@
 	return @"WhereIsMyPhoneViewController";
 }
 
-+ (double)latitudeRangeForLocation:(CLLocation *)aLocation
-{
-	const double M = 6367000.0; // approximate average meridional radius of curvature of earth
-	const double metersToLatitude = 1.0 / ((M_PI / 180.0) * M);
-	const double accuracyToWindowScale = 2.0;
-	
-	return aLocation.horizontalAccuracy * metersToLatitude * accuracyToWindowScale;
-}
-
-+ (double)longitudeRangeForLocation:(CLLocation *)aLocation
-{
-	double latitudeRange =
-		[WhereIsMyPhoneViewController latitudeRangeForLocation:aLocation];
-	
-	return latitudeRange * cos(aLocation.coordinate.latitude * M_PI / 180.0);
-}
-
 - (IBAction)openInDefaultBrowser:(id)sender
 {
 	CLLocation *currentLocation = locationManager.location;
-	
-	NSURL *externalBrowserURL = [NSURL URLWithString:[NSString stringWithFormat:
-		@"http://maps.google.com/maps?ll=%f,%f&amp;spn=%f,%f",
-		currentLocation.coordinate.latitude,
-		currentLocation.coordinate.longitude,
-		[WhereIsMyPhoneViewController latitudeRangeForLocation:currentLocation],
-		[WhereIsMyPhoneViewController longitudeRangeForLocation:currentLocation]]];
-
+	NSURL *externalBrowserURL = [locationFormatter googleMapsUrlForLocation:currentLocation];
 	[[UIApplication sharedApplication] openURL:externalBrowserURL];
+}
+
+- (void)updateUI
+{
+	// Load the HTML in the WebView and set the labels
+	NSString *htmlString = locationFormatter.formattedString;
+	[webView loadHTMLString:htmlString baseURL:nil];
+	[locationLabel setText:locationFormatter.locationLabel];
+	[accuracyLabel setText:locationFormatter.accuracyLabel];
 }
 
 - (void)locationManager:(CLLocationManager *)manager
@@ -64,47 +57,18 @@
 	fromLocation:(CLLocation *)oldLocation
 {
 	// Ignore updates where nothing we care about changed
-	if (newLocation.coordinate.longitude == oldLocation.coordinate.longitude &&
-		newLocation.coordinate.latitude == oldLocation.coordinate.latitude &&
-		newLocation.horizontalAccuracy == oldLocation.horizontalAccuracy)
+	if (![locationFormatter updateToLocation:newLocation fromLocation:oldLocation])
 	{
 		return;
 	}
-
-	// Load the HTML for displaying the Google map from a file and replace the
-	// format placeholders with our location data
-	NSString *htmlString = [NSString stringWithFormat:
-		[NSString 
-			stringWithContentsOfFile:
-				[[NSBundle bundleForClass:[self class]]
-					pathForResource:@"HTMLFormatString"
-					ofType:@"html"]
-			encoding:NSUTF8StringEncoding
-			error:NULL],
-		newLocation.coordinate.latitude,
-		newLocation.coordinate.longitude,
-		[WhereIsMyPhoneViewController latitudeRangeForLocation:newLocation],
-		[WhereIsMyPhoneViewController longitudeRangeForLocation:newLocation]];
-	
-	// Load the HTML in the WebView and set the labels
-	[webView loadHTMLString:htmlString baseURL:nil];
-	[locationLabel setText:[NSString stringWithFormat:@"%f, %f",
-		newLocation.coordinate.latitude, newLocation.coordinate.longitude]];
-	[accuracyLabel setText:[NSString stringWithFormat:@"%f",
-		newLocation.horizontalAccuracy]];
+	[self updateUI];
 }
 
 - (void)locationManager:(CLLocationManager *)manager
 	didFailWithError:(NSError *)error
 {
-	[webView
-		loadHTMLString:
-			[NSString stringWithFormat:
-				NSLocalizedString(@"Location manager failed with error: %@", nil),
-				[error localizedDescription]]
-		baseURL:nil];
-	[locationLabel setText:@""];
-	[accuracyLabel setText:@""];
+	[locationFormatter updateFailedWithError:error];
+	[self updateUI];
 }
 
 - (void)dealloc
