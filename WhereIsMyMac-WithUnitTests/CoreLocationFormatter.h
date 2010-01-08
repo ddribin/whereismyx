@@ -5,7 +5,6 @@
 @interface CoreLocationFormatter : NSObject
 {
 	NSString * _formatString;
-	NSURL * _googleMapsUrl;
 	NSString * _formattedString;
 	NSString * _locationLabel;
 	NSString * _accuracyLabel;

@@ -2,7 +2,6 @@
 
 
 @interface CoreLocationFormatter ()
-@property (nonatomic, copy, readwrite) NSURL * googleMapsUrl;
 @property (nonatomic, copy, readwrite) NSString * formattedString;
 @property (nonatomic, copy, readwrite) NSString * locationLabel;
 @property (nonatomic, copy, readwrite) NSString * accuracyLabel;
@@ -10,7 +9,6 @@
 
 @implementation CoreLocationFormatter
 
-@synthesize googleMapsUrl = _googleMapsUrl;
 @synthesize formattedString = _formattedString;
 @synthesize locationLabel = _locationLabel;
 @synthesize accuracyLabel = _accuracyLabel;
@@ -48,7 +46,6 @@
 - (void)dealloc
 {
 	[_formatString release];
-	[_googleMapsUrl release];
 	[_formattedString release];
 	[_locationLabel release];
 	[_accuracyLabel release];
