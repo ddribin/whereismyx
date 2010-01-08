@@ -233,6 +233,7 @@
 			);
 			path = Classes;
 			sourceTree = "<group>";
+			usesTabs = 1;
 		};
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
@@ -350,6 +351,7 @@
 			);
 			name = Tests;
 			sourceTree = "<group>";
+			usesTabs = 1;
 		};
 /* End PBXGroup section */
 
