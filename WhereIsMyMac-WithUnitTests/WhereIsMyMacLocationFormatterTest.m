@@ -43,8 +43,9 @@
 	CLLocationCoordinate2D coord = {.latitude = -37.80996889, .longitude = 144.96326388};
 	CLLocation * location = [self makeLocationWithCoordinate:coord];
 	
-	[formatter uppdateToLocation:location fromLocation:nil];
+	BOOL updated = [formatter uppdateToLocation:location fromLocation:nil];
 	
+	STAssertTrue(updated, nil);
 	STAssertEqualObjects(formatter.htmlString,
 						 @"ll=-37.809969,144.963264 spn=-0.000018,-0.000014", nil);
 	STAssertEqualObjects(formatter.locationLabel,
@@ -52,6 +53,17 @@
 	STAssertEqualObjects(formatter.accuracyLabel,
 						 ([NSString stringWithFormat:@"%f", kCLLocationAccuracyBest]),
 						 nil);
+}
+
+- (void)testUpdatedIgnoredWithSameCoordinates
+{
+	WhereIsMyMacLocationFormatter * formatter = [self makeFormatterWithFormatString:@"ll=%f,%f spn=%f,%f"];
+	CLLocationCoordinate2D coord = {.latitude = -37.80996889, .longitude = 144.96326388};
+	CLLocation * location = [self makeLocationWithCoordinate:coord];
+	
+	BOOL updated = [formatter uppdateToLocation:location fromLocation:location];
+	
+	STAssertFalse(updated, nil);
 }
 
 - (void)testUpdateFailed

@@ -13,6 +13,7 @@
 //
 
 #import "WhereIsMyMacWindowController.h"
+#import "WhereIsMyMacLocationFormatter.h"
 
 
 @implementation WhereIsMyMacWindowController
@@ -28,6 +29,13 @@
 	locationManager = [[CLLocationManager alloc] init];
 	locationManager.delegate = self;
 	[locationManager startUpdatingLocation];
+	NSString * formatString = [NSString 
+							   stringWithContentsOfFile:
+							   [[NSBundle bundleForClass:[self class]]
+								pathForResource:@"HTMLFormatString" ofType:@"html"]
+							   encoding:NSUTF8StringEncoding
+							   error:NULL];
+	locationFormatter = [[WhereIsMyMacLocationFormatter alloc] initWithHtmlFormatString:formatString];
 }
 
 - (NSString *)windowNibName
@@ -35,88 +43,44 @@
 	return @"WhereIsMyMacWindow";
 }
 
-+ (double)latitudeRangeForLocation:(CLLocation *)aLocation
-{
-	const double M = 6367000.0; // approximate average meridional radius of curvature of earth
-	const double metersToLatitude = 1.0 / ((M_PI / 180.0) * M);
-	const double accuracyToWindowScale = 2.0;
-	
-	return aLocation.horizontalAccuracy * metersToLatitude * accuracyToWindowScale;
-}
-
-+ (double)longitudeRangeForLocation:(CLLocation *)aLocation
-{
-	double latitudeRange =
-		[WhereIsMyMacWindowController latitudeRangeForLocation:aLocation];
-	
-	return latitudeRange * cos(aLocation.coordinate.latitude * M_PI / 180.0);
-}
-
 - (IBAction)openInDefaultBrowser:(id)sender
 {
 	CLLocation *currentLocation = locationManager.location;
-	
-	NSURL *externalBrowserURL = [NSURL URLWithString:[NSString stringWithFormat:
-		@"http://maps.google.com/maps?ll=%f,%f&amp;spn=%f,%f",
-		currentLocation.coordinate.latitude,
-		currentLocation.coordinate.longitude,
-		[WhereIsMyMacWindowController latitudeRangeForLocation:currentLocation],
-		[WhereIsMyMacWindowController longitudeRangeForLocation:currentLocation]]];
+	NSURL *externalBrowserURL = [locationFormatter googleMapsUrlForLocation:currentLocation];
 
 	[[NSWorkspace sharedWorkspace] openURL:externalBrowserURL];
+}
+
+- (void)updateTheUI
+{
+	NSString *htmlString = [locationFormatter htmlString];
+	[[webView mainFrame] loadHTMLString:htmlString baseURL:nil];
+	[locationLabel setStringValue:locationFormatter.locationLabel];
+	[accuracyLabel setStringValue:locationFormatter.accuracyLabel];
 }
 
 - (void)locationManager:(CLLocationManager *)manager
 	didUpdateToLocation:(CLLocation *)newLocation
 	fromLocation:(CLLocation *)oldLocation
 {
-	// Ignore updates where nothing we care about changed
-	if (newLocation.coordinate.longitude == oldLocation.coordinate.longitude &&
-		newLocation.coordinate.latitude == oldLocation.coordinate.latitude &&
-		newLocation.horizontalAccuracy == oldLocation.horizontalAccuracy)
-	{
+	if (![locationFormatter uppdateToLocation:newLocation fromLocation:oldLocation]) {
 		return;
 	}
-
-	// Load the HTML for displaying the Google map from a file and replace the
-	// format placeholders with our location data
-	NSString *htmlString = [NSString stringWithFormat:
-		[NSString 
-			stringWithContentsOfFile:
-				[[NSBundle bundleForClass:[self class]]
-					pathForResource:@"HTMLFormatString" ofType:@"html"]
-			encoding:NSUTF8StringEncoding
-			error:NULL],
-		newLocation.coordinate.latitude,
-		newLocation.coordinate.longitude,
-		[WhereIsMyMacWindowController latitudeRangeForLocation:newLocation],
-		[WhereIsMyMacWindowController longitudeRangeForLocation:newLocation]];
-	
-	// Load the HTML in the WebView and set the labels
-	[[webView mainFrame] loadHTMLString:htmlString baseURL:nil];
-	[locationLabel setStringValue:[NSString stringWithFormat:@"%f, %f",
-		newLocation.coordinate.latitude, newLocation.coordinate.longitude]];
-	[accuracyLabel setStringValue:[NSString stringWithFormat:@"%f",
-		newLocation.horizontalAccuracy]];
+	[self updateTheUI];
 }
 
 - (void)locationManager:(CLLocationManager *)manager
 	didFailWithError:(NSError *)error
 {
-	[[webView mainFrame]
-		loadHTMLString:
-			[NSString stringWithFormat:
-				NSLocalizedString(@"Location manager failed with error: %@", nil),
-				[error localizedDescription]]
-		baseURL:nil];
-	[locationLabel setStringValue:@""];
-	[accuracyLabel setStringValue:@""];
+	[locationFormatter updateFailedWithError:error];
+	[self updateTheUI];
 }
 
 - (void)dealloc
 {
 	[locationManager stopUpdatingLocation];
 	[locationManager release];
+	[locationFormatter release];
 	
 	[super dealloc];
 }

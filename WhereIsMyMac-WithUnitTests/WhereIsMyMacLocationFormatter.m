@@ -55,14 +55,14 @@
 	[super dealloc];
 }
 
-- (void)uppdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation;
+- (BOOL)uppdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation;
 {
 	// Ignore updates where nothing we care about changed
 	if (newLocation.coordinate.longitude == oldLocation.coordinate.longitude &&
 		newLocation.coordinate.latitude == oldLocation.coordinate.latitude &&
 		newLocation.horizontalAccuracy == oldLocation.horizontalAccuracy)
 	{
-		return;
+		return NO;
 	}
 	
 	NSString *htmlString = [NSString stringWithFormat:_htmlFormatString,
@@ -76,6 +76,7 @@
 						  newLocation.coordinate.latitude, newLocation.coordinate.longitude];
 	self.accuracyLabel = [NSString stringWithFormat:@"%f",
 						  newLocation.horizontalAccuracy];
+	return YES;
 }
 
 - (void)updateFailedWithError:(NSError *)error;

@@ -17,7 +17,7 @@
 
 - (id)initWithHtmlFormatString:(NSString *)htmlFormatString;
 
-- (void)uppdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation;
+- (BOOL)uppdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation;
 - (void)updateFailedWithError:(NSError *)error;
 
 - (NSURL *)googleMapsUrlForLocation:(CLLocation *)currentLocation;
