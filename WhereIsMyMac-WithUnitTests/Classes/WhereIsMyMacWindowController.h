@@ -18,12 +18,18 @@
 
 @interface WhereIsMyMacWindowController : NSWindowController <CLLocationManagerDelegate>
 {
-	IBOutlet WebView *webView;
+	WebView *webView;
 	CLLocationManager *locationManager;
-	IBOutlet NSTextField *locationLabel;
-	IBOutlet NSTextField *accuracyLabel;
-	IBOutlet NSButton *openInBrowserButton;
+	NSTextField *locationLabel;
+	NSTextField *accuracyLabel;
+	NSButton *openInBrowserButton;
 }
+
+@property (assign) IBOutlet WebView *webView;
+@property (retain) CLLocationManager *locationManager;
+@property (assign) IBOutlet NSTextField *locationLabel;
+@property (assign) IBOutlet NSTextField *accuracyLabel;
+@property (assign) IBOutlet NSButton *openInBrowserButton;
 
 - (IBAction)openInDefaultBrowser:(id)sender;
 

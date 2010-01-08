@@ -76,16 +76,10 @@ id mockWorkspace = nil;
 {
 	[windowController loadWindow];
 
-	WebView *webView;
-	object_getInstanceVariable(windowController, "webView", (void **)&webView);
-	CLLocationManager *locationManager;
-	object_getInstanceVariable(windowController, "locationManager", (void **)&locationManager);
-	NSTextField *locationLabel;
-	object_getInstanceVariable(windowController, "locationLabel", (void **)&locationLabel);
-	NSTextField *accuracyLabel;
-	object_getInstanceVariable(windowController, "accuracyLabel", (void **)&accuracyLabel);
-	NSButton *openInBrowserButton;
-	object_getInstanceVariable(windowController, "openInBrowserButton", (void **)&openInBrowserButton);
+	WebView *webView = windowController.webView;
+	NSTextField *locationLabel = windowController.locationLabel;
+	NSTextField *accuracyLabel = windowController.accuracyLabel;
+	NSButton *openInBrowserButton = windowController.openInBrowserButton;
 	
 	STAssertTrue([windowController isWindowLoaded], @"Window failed to load");
 	STAssertNotNil(webView, @"webView ivar not set on load");
@@ -100,7 +94,7 @@ id mockWorkspace = nil;
 
 - (void)testWindowDidLoad
 {
-	mockLocationManager = [OCMockObject mockForClass:[CLLocationManager class]];
+	mockLocationManager = [[OCMockObject mockForClass:[CLLocationManager class]] retain];
 	[[mockLocationManager expect] setDelegate:windowController];
 	[[mockLocationManager expect] startUpdatingLocation];
 
@@ -108,7 +102,7 @@ id mockWorkspace = nil;
 
 	[mockLocationManager verify];
 	
-	object_setInstanceVariable(windowController, "locationManager", nil);
+	windowController.locationManager = nil;
 	mockLocationManager = nil;
 }
 
@@ -127,12 +121,12 @@ id mockWorkspace = nil;
 	[[mockWebFrame expect]
 		loadHTMLString:htmlString
 		baseURL:nil];
-	object_setInstanceVariable(windowController, "webView", mockWebView);
+	windowController.webView = mockWebView;
 
 	NSTextField *locationLabel = [[[NSTextField alloc] init] autorelease];
 	NSTextField *accuracyLabel = [[[NSTextField alloc] init] autorelease];
-	object_setInstanceVariable(windowController, "locationLabel", locationLabel);
-	object_setInstanceVariable(windowController, "accuracyLabel", accuracyLabel);
+	windowController.locationLabel = locationLabel;
+	windowController.accuracyLabel = accuracyLabel;
 
 	CLLocationCoordinate2D coord;
 	coord.longitude = 144.96326388;
@@ -187,12 +181,12 @@ id mockWorkspace = nil;
 				NSLocalizedString(@"Location manager failed with error: %@", nil),
 				localizedErrorDescription]
 		baseURL:nil];
-	object_setInstanceVariable(windowController, "webView", mockWebView);
+	windowController.webView = mockWebView;
 
 	NSTextField *locationLabel = [[[NSTextField alloc] init] autorelease];
 	NSTextField *accuracyLabel = [[[NSTextField alloc] init] autorelease];
-	object_setInstanceVariable(windowController, "locationLabel", locationLabel);
-	object_setInstanceVariable(windowController, "accuracyLabel", accuracyLabel);
+	windowController.locationLabel = locationLabel;
+	windowController.accuracyLabel = accuracyLabel;
 	[locationLabel setStringValue:@"initial"];
 	[accuracyLabel setStringValue:@"initial"];
 	
@@ -226,7 +220,7 @@ id mockWorkspace = nil;
 
 	id mockLocationManager = [OCMockObject mockForClass:[CLLocationManager class]];
 	[[[mockLocationManager stub] andReturn:location] location];
-	object_setInstanceVariable(windowController, "locationManager", mockLocationManager);
+	windowController.locationManager = mockLocationManager;
 	
 	mockWorkspace = [OCMockObject mockForClass:[NSWorkspace class]];
 	[[mockWorkspace expect] openURL:[NSURL URLWithString:
@@ -236,15 +230,15 @@ id mockWorkspace = nil;
 	
 	[mockWorkspace verify];
 	mockWorkspace = nil;
-	object_setInstanceVariable(windowController, "locationManager", nil);
+	windowController.locationManager = nil;
 }
 
 - (void)testDealloc
 {
 	id mockLocationManager = [OCMockObject mockForClass:[CLLocationManager class]];
-	NSUInteger preRetainCount = [mockLocationManager retainCount];
 	[mockLocationManager retain];
-	object_setInstanceVariable(windowController, "locationManager", mockLocationManager);
+	NSUInteger preRetainCount = [mockLocationManager retainCount];
+	windowController.locationManager = mockLocationManager;
 	
 	[[mockLocationManager expect] stopUpdatingLocation];
 

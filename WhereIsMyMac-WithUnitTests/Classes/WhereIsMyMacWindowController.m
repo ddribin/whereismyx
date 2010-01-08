@@ -17,6 +17,12 @@
 
 @implementation WhereIsMyMacWindowController
 
+@synthesize webView;
+@synthesize locationManager;
+@synthesize locationLabel;
+@synthesize accuracyLabel;
+@synthesize openInBrowserButton;
+
 - (void)windowDidLoad
 {
 	locationManager = [[CLLocationManager alloc] init];
