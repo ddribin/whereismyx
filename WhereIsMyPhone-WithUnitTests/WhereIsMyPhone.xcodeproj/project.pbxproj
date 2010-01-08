@@ -1,0 +1,853 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1D3623260D0F684500981E51 /* WhereIsMyPhoneAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* WhereIsMyPhoneAppDelegate.m */; };
+		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
+		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
+		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
+		2899E5220DE3E06400AC0155 /* WhereIsMyPhoneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E5210DE3E06400AC0155 /* WhereIsMyPhoneViewController.xib */; };
+		28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
+		28D7ACF80DDB3853001CB0EB /* WhereIsMyPhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* WhereIsMyPhoneViewController.m */; };
+		C901D56310DDE69200E72C90 /* WhereIsMyPhoneAppDelegateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C901D53B10DDE48800E72C90 /* WhereIsMyPhoneAppDelegateTests.m */; };
+		C901D59410DDE74A00E72C90 /* NSInvocation+OCMAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C901D4BD10DDE38300E72C90 /* NSInvocation+OCMAdditions.m */; };
+		C901D59510DDE74A00E72C90 /* NSMethodSignature+OCMAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C901D4BF10DDE38300E72C90 /* NSMethodSignature+OCMAdditions.m */; };
+		C901D59610DDE74A00E72C90 /* NSNotificationCenter+OCMAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C901D4C110DDE38300E72C90 /* NSNotificationCenter+OCMAdditions.m */; };
+		C901D59710DDE74A00E72C90 /* OCClassMockObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C901D4C310DDE38300E72C90 /* OCClassMockObject.m */; };
+		C901D59810DDE74A00E72C90 /* OCMArg.m in Sources */ = {isa = PBXBuildFile; fileRef = C901D4C510DDE38300E72C90 /* OCMArg.m */; };
+		C901D59910DDE74A00E72C90 /* OCMBoxedReturnValueProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = C901D4C710DDE38300E72C90 /* OCMBoxedReturnValueProvider.m */; };
+		C901D59A10DDE74A00E72C90 /* OCMConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = C901D4C910DDE38300E72C90 /* OCMConstraint.m */; };
+		C901D59B10DDE74A00E72C90 /* OCMExceptionReturnValueProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = C901D4CB10DDE38300E72C90 /* OCMExceptionReturnValueProvider.m */; };
+		C901D59C10DDE74A00E72C90 /* OCMIndirectReturnValueProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = C901D4CD10DDE38300E72C90 /* OCMIndirectReturnValueProvider.m */; };
+		C901D59D10DDE74A00E72C90 /* OCMNotificationPoster.m in Sources */ = {isa = PBXBuildFile; fileRef = C901D4CF10DDE38300E72C90 /* OCMNotificationPoster.m */; };
+		C901D59E10DDE74A00E72C90 /* OCMObserverRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = C901D4D110DDE38300E72C90 /* OCMObserverRecorder.m */; };
+		C901D59F10DDE74A00E72C90 /* OCMockObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C901D4D410DDE38300E72C90 /* OCMockObject.m */; };
+		C901D5A010DDE74A00E72C90 /* OCMockRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = C901D4D610DDE38300E72C90 /* OCMockRecorder.m */; };
+		C901D5A110DDE74A00E72C90 /* OCMPassByRefSetter.m in Sources */ = {isa = PBXBuildFile; fileRef = C901D4D810DDE38300E72C90 /* OCMPassByRefSetter.m */; };
+		C901D5A210DDE74A00E72C90 /* OCMReturnValueProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = C901D4DA10DDE38300E72C90 /* OCMReturnValueProvider.m */; };
+		C901D5A310DDE74A00E72C90 /* OCObserverMockObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C901D4DC10DDE38300E72C90 /* OCObserverMockObject.m */; };
+		C901D5A410DDE74A00E72C90 /* OCPartialMockObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C901D4DE10DDE38300E72C90 /* OCPartialMockObject.m */; };
+		C901D5A510DDE74A00E72C90 /* OCPartialMockRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = C901D4E010DDE38300E72C90 /* OCPartialMockRecorder.m */; };
+		C901D5A610DDE74A00E72C90 /* OCProtocolMockObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C901D4E210DDE38300E72C90 /* OCProtocolMockObject.m */; };
+		C907BD2B10DF394E0096B9A5 /* NSObject+SupersequentImplementation.m in Sources */ = {isa = PBXBuildFile; fileRef = C907BD2A10DF394E0096B9A5 /* NSObject+SupersequentImplementation.m */; };
+		C907BD9F10DF3C200096B9A5 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9849E4710DF248300411F31 /* CoreLocation.framework */; };
+		C907BDB010DF3C860096B9A5 /* WhereIsMyPhoneAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* WhereIsMyPhoneAppDelegate.m */; };
+		C907BDBA10DF3C910096B9A5 /* WhereIsMyPhoneViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C907BCFD10DF37740096B9A5 /* WhereIsMyPhoneViewControllerTests.m */; };
+		C97E753710E6EA8D00CB9E83 /* WhereIsMyPhoneAppDelegateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C901D53B10DDE48800E72C90 /* WhereIsMyPhoneAppDelegateTests.m */; };
+		C97E753810E6EA8D00CB9E83 /* WhereIsMyPhoneViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C907BCFD10DF37740096B9A5 /* WhereIsMyPhoneViewControllerTests.m */; };
+		C97E753910E6EA8D00CB9E83 /* NSInvocation+OCMAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C901D4BD10DDE38300E72C90 /* NSInvocation+OCMAdditions.m */; };
+		C97E753A10E6EA8D00CB9E83 /* NSMethodSignature+OCMAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C901D4BF10DDE38300E72C90 /* NSMethodSignature+OCMAdditions.m */; };
+		C97E753B10E6EA8D00CB9E83 /* NSNotificationCenter+OCMAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C901D4C110DDE38300E72C90 /* NSNotificationCenter+OCMAdditions.m */; };
+		C97E753C10E6EA8D00CB9E83 /* OCClassMockObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C901D4C310DDE38300E72C90 /* OCClassMockObject.m */; };
+		C97E753D10E6EA8D00CB9E83 /* OCMArg.m in Sources */ = {isa = PBXBuildFile; fileRef = C901D4C510DDE38300E72C90 /* OCMArg.m */; };
+		C97E753E10E6EA8D00CB9E83 /* OCMBoxedReturnValueProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = C901D4C710DDE38300E72C90 /* OCMBoxedReturnValueProvider.m */; };
+		C97E753F10E6EA8D00CB9E83 /* OCMConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = C901D4C910DDE38300E72C90 /* OCMConstraint.m */; };
+		C97E754010E6EA8D00CB9E83 /* OCMExceptionReturnValueProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = C901D4CB10DDE38300E72C90 /* OCMExceptionReturnValueProvider.m */; };
+		C97E754110E6EA8D00CB9E83 /* OCMIndirectReturnValueProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = C901D4CD10DDE38300E72C90 /* OCMIndirectReturnValueProvider.m */; };
+		C97E754210E6EA8D00CB9E83 /* OCMNotificationPoster.m in Sources */ = {isa = PBXBuildFile; fileRef = C901D4CF10DDE38300E72C90 /* OCMNotificationPoster.m */; };
+		C97E754310E6EA8D00CB9E83 /* OCMObserverRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = C901D4D110DDE38300E72C90 /* OCMObserverRecorder.m */; };
+		C97E754410E6EA8D00CB9E83 /* OCMockObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C901D4D410DDE38300E72C90 /* OCMockObject.m */; };
+		C97E754510E6EA8D00CB9E83 /* OCMockRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = C901D4D610DDE38300E72C90 /* OCMockRecorder.m */; };
+		C97E754610E6EA8D00CB9E83 /* OCMPassByRefSetter.m in Sources */ = {isa = PBXBuildFile; fileRef = C901D4D810DDE38300E72C90 /* OCMPassByRefSetter.m */; };
+		C97E754710E6EA8D00CB9E83 /* OCMReturnValueProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = C901D4DA10DDE38300E72C90 /* OCMReturnValueProvider.m */; };
+		C97E754810E6EA8D00CB9E83 /* OCObserverMockObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C901D4DC10DDE38300E72C90 /* OCObserverMockObject.m */; };
+		C97E754910E6EA8D00CB9E83 /* OCPartialMockObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C901D4DE10DDE38300E72C90 /* OCPartialMockObject.m */; };
+		C97E754A10E6EA8D00CB9E83 /* OCPartialMockRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = C901D4E010DDE38300E72C90 /* OCPartialMockRecorder.m */; };
+		C97E754B10E6EA8D00CB9E83 /* OCProtocolMockObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C901D4E210DDE38300E72C90 /* OCProtocolMockObject.m */; };
+		C97E754C10E6EA8D00CB9E83 /* NSObject+SupersequentImplementation.m in Sources */ = {isa = PBXBuildFile; fileRef = C907BD2A10DF394E0096B9A5 /* NSObject+SupersequentImplementation.m */; };
+		C97E754D10E6EAA000CB9E83 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
+		C97E754E10E6EAA000CB9E83 /* WhereIsMyPhoneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E5210DE3E06400AC0155 /* WhereIsMyPhoneViewController.xib */; };
+		C97E754F10E6EAA000CB9E83 /* HTMLFormatString.html in Resources */ = {isa = PBXBuildFile; fileRef = C9849E7E10DF255B00411F31 /* HTMLFormatString.html */; };
+		C97E755010E6EAA500CB9E83 /* WhereIsMyPhoneAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* WhereIsMyPhoneAppDelegate.m */; };
+		C97E755110E6EAA500CB9E83 /* WhereIsMyPhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* WhereIsMyPhoneViewController.m */; };
+		C97E755210E6EAB700CB9E83 /* WebPageTestContent.html in Resources */ = {isa = PBXBuildFile; fileRef = C9849E8110DF256800411F31 /* WebPageTestContent.html */; };
+		C97E760910E6EAE200CB9E83 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
+		C97E760A10E6EAE200CB9E83 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		C97E760B10E6EAE200CB9E83 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
+		C97E760C10E6EAE200CB9E83 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9849E4710DF248300411F31 /* CoreLocation.framework */; };
+		C98499A510DEED8C00411F31 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
+		C98499A610DEED8C00411F31 /* WhereIsMyPhoneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E5210DE3E06400AC0155 /* WhereIsMyPhoneViewController.xib */; };
+		C98499BC10DEED9D00411F31 /* ApplicationTests.octest in Resources */ = {isa = PBXBuildFile; fileRef = C901D55B10DDE66D00E72C90 /* ApplicationTests.octest */; };
+		C9849A3310DEEFA600411F31 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
+		C9849A3510DEEFA600411F31 /* WhereIsMyPhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7ACF70DDB3853001CB0EB /* WhereIsMyPhoneViewController.m */; };
+		C9849ACA10DEEFB300411F31 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
+		C9849ACB10DEEFB300411F31 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
+		C9849ACC10DEEFB300411F31 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 288765A40DF7441C002DB57D /* CoreGraphics.framework */; };
+		C9849E4810DF248300411F31 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9849E4710DF248300411F31 /* CoreLocation.framework */; };
+		C9849E5A10DF249300411F31 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9849E4710DF248300411F31 /* CoreLocation.framework */; };
+		C9849E7F10DF255B00411F31 /* HTMLFormatString.html in Resources */ = {isa = PBXBuildFile; fileRef = C9849E7E10DF255B00411F31 /* HTMLFormatString.html */; };
+		C9849E8010DF255B00411F31 /* HTMLFormatString.html in Resources */ = {isa = PBXBuildFile; fileRef = C9849E7E10DF255B00411F31 /* HTMLFormatString.html */; };
+		C9849E8210DF256800411F31 /* WebPageTestContent.html in Resources */ = {isa = PBXBuildFile; fileRef = C9849E8110DF256800411F31 /* WebPageTestContent.html */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C97E755310E6EAC700CB9E83 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1D6058900D05DD3D006BFB54;
+			remoteInfo = WhereIsMyPhone;
+		};
+		C984988610DDFE0D00411F31 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1D6058900D05DD3D006BFB54;
+			remoteInfo = WhereIsMyPhone;
+		};
+		C98499BF10DEEDA200411F31 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 29B97313FDCFA39411CA2CEA /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C901D55A10DDE66D00E72C90;
+			remoteInfo = UnitTests;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1D3623240D0F684500981E51 /* WhereIsMyPhoneAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WhereIsMyPhoneAppDelegate.h; sourceTree = "<group>"; };
+		1D3623250D0F684500981E51 /* WhereIsMyPhoneAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WhereIsMyPhoneAppDelegate.m; sourceTree = "<group>"; };
+		1D6058910D05DD3D006BFB54 /* WhereIsMyPhone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhereIsMyPhone.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		288765A40DF7441C002DB57D /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		2899E5210DE3E06400AC0155 /* WhereIsMyPhoneViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WhereIsMyPhoneViewController.xib; sourceTree = "<group>"; };
+		28AD733E0D9D9553002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
+		28D7ACF60DDB3853001CB0EB /* WhereIsMyPhoneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WhereIsMyPhoneViewController.h; sourceTree = "<group>"; };
+		28D7ACF70DDB3853001CB0EB /* WhereIsMyPhoneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WhereIsMyPhoneViewController.m; sourceTree = "<group>"; };
+		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		32CA4F630368D1EE00C91783 /* WhereIsMyPhone_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WhereIsMyPhone_Prefix.pch; sourceTree = "<group>"; };
+		8D1107310486CEB800E47090 /* WhereIsMyPhone-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "WhereIsMyPhone-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		C901D4BC10DDE38300E72C90 /* NSInvocation+OCMAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSInvocation+OCMAdditions.h"; path = "OCMock/NSInvocation+OCMAdditions.h"; sourceTree = "<group>"; };
+		C901D4BD10DDE38300E72C90 /* NSInvocation+OCMAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSInvocation+OCMAdditions.m"; path = "OCMock/NSInvocation+OCMAdditions.m"; sourceTree = "<group>"; };
+		C901D4BE10DDE38300E72C90 /* NSMethodSignature+OCMAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSMethodSignature+OCMAdditions.h"; path = "OCMock/NSMethodSignature+OCMAdditions.h"; sourceTree = "<group>"; };
+		C901D4BF10DDE38300E72C90 /* NSMethodSignature+OCMAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSMethodSignature+OCMAdditions.m"; path = "OCMock/NSMethodSignature+OCMAdditions.m"; sourceTree = "<group>"; };
+		C901D4C010DDE38300E72C90 /* NSNotificationCenter+OCMAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSNotificationCenter+OCMAdditions.h"; path = "OCMock/NSNotificationCenter+OCMAdditions.h"; sourceTree = "<group>"; };
+		C901D4C110DDE38300E72C90 /* NSNotificationCenter+OCMAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSNotificationCenter+OCMAdditions.m"; path = "OCMock/NSNotificationCenter+OCMAdditions.m"; sourceTree = "<group>"; };
+		C901D4C210DDE38300E72C90 /* OCClassMockObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OCClassMockObject.h; path = OCMock/OCClassMockObject.h; sourceTree = "<group>"; };
+		C901D4C310DDE38300E72C90 /* OCClassMockObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OCClassMockObject.m; path = OCMock/OCClassMockObject.m; sourceTree = "<group>"; };
+		C901D4C410DDE38300E72C90 /* OCMArg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OCMArg.h; path = OCMock/OCMArg.h; sourceTree = "<group>"; };
+		C901D4C510DDE38300E72C90 /* OCMArg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OCMArg.m; path = OCMock/OCMArg.m; sourceTree = "<group>"; };
+		C901D4C610DDE38300E72C90 /* OCMBoxedReturnValueProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OCMBoxedReturnValueProvider.h; path = OCMock/OCMBoxedReturnValueProvider.h; sourceTree = "<group>"; };
+		C901D4C710DDE38300E72C90 /* OCMBoxedReturnValueProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OCMBoxedReturnValueProvider.m; path = OCMock/OCMBoxedReturnValueProvider.m; sourceTree = "<group>"; };
+		C901D4C810DDE38300E72C90 /* OCMConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OCMConstraint.h; path = OCMock/OCMConstraint.h; sourceTree = "<group>"; };
+		C901D4C910DDE38300E72C90 /* OCMConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OCMConstraint.m; path = OCMock/OCMConstraint.m; sourceTree = "<group>"; };
+		C901D4CA10DDE38300E72C90 /* OCMExceptionReturnValueProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OCMExceptionReturnValueProvider.h; path = OCMock/OCMExceptionReturnValueProvider.h; sourceTree = "<group>"; };
+		C901D4CB10DDE38300E72C90 /* OCMExceptionReturnValueProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OCMExceptionReturnValueProvider.m; path = OCMock/OCMExceptionReturnValueProvider.m; sourceTree = "<group>"; };
+		C901D4CC10DDE38300E72C90 /* OCMIndirectReturnValueProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OCMIndirectReturnValueProvider.h; path = OCMock/OCMIndirectReturnValueProvider.h; sourceTree = "<group>"; };
+		C901D4CD10DDE38300E72C90 /* OCMIndirectReturnValueProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OCMIndirectReturnValueProvider.m; path = OCMock/OCMIndirectReturnValueProvider.m; sourceTree = "<group>"; };
+		C901D4CE10DDE38300E72C90 /* OCMNotificationPoster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OCMNotificationPoster.h; path = OCMock/OCMNotificationPoster.h; sourceTree = "<group>"; };
+		C901D4CF10DDE38300E72C90 /* OCMNotificationPoster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OCMNotificationPoster.m; path = OCMock/OCMNotificationPoster.m; sourceTree = "<group>"; };
+		C901D4D010DDE38300E72C90 /* OCMObserverRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OCMObserverRecorder.h; path = OCMock/OCMObserverRecorder.h; sourceTree = "<group>"; };
+		C901D4D110DDE38300E72C90 /* OCMObserverRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OCMObserverRecorder.m; path = OCMock/OCMObserverRecorder.m; sourceTree = "<group>"; };
+		C901D4D210DDE38300E72C90 /* OCMock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OCMock.h; path = OCMock/OCMock.h; sourceTree = "<group>"; };
+		C901D4D310DDE38300E72C90 /* OCMockObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OCMockObject.h; path = OCMock/OCMockObject.h; sourceTree = "<group>"; };
+		C901D4D410DDE38300E72C90 /* OCMockObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OCMockObject.m; path = OCMock/OCMockObject.m; sourceTree = "<group>"; };
+		C901D4D510DDE38300E72C90 /* OCMockRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OCMockRecorder.h; path = OCMock/OCMockRecorder.h; sourceTree = "<group>"; };
+		C901D4D610DDE38300E72C90 /* OCMockRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OCMockRecorder.m; path = OCMock/OCMockRecorder.m; sourceTree = "<group>"; };
+		C901D4D710DDE38300E72C90 /* OCMPassByRefSetter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OCMPassByRefSetter.h; path = OCMock/OCMPassByRefSetter.h; sourceTree = "<group>"; };
+		C901D4D810DDE38300E72C90 /* OCMPassByRefSetter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OCMPassByRefSetter.m; path = OCMock/OCMPassByRefSetter.m; sourceTree = "<group>"; };
+		C901D4D910DDE38300E72C90 /* OCMReturnValueProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OCMReturnValueProvider.h; path = OCMock/OCMReturnValueProvider.h; sourceTree = "<group>"; };
+		C901D4DA10DDE38300E72C90 /* OCMReturnValueProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OCMReturnValueProvider.m; path = OCMock/OCMReturnValueProvider.m; sourceTree = "<group>"; };
+		C901D4DB10DDE38300E72C90 /* OCObserverMockObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OCObserverMockObject.h; path = OCMock/OCObserverMockObject.h; sourceTree = "<group>"; };
+		C901D4DC10DDE38300E72C90 /* OCObserverMockObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OCObserverMockObject.m; path = OCMock/OCObserverMockObject.m; sourceTree = "<group>"; };
+		C901D4DD10DDE38300E72C90 /* OCPartialMockObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OCPartialMockObject.h; path = OCMock/OCPartialMockObject.h; sourceTree = "<group>"; };
+		C901D4DE10DDE38300E72C90 /* OCPartialMockObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OCPartialMockObject.m; path = OCMock/OCPartialMockObject.m; sourceTree = "<group>"; };
+		C901D4DF10DDE38300E72C90 /* OCPartialMockRecorder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OCPartialMockRecorder.h; path = OCMock/OCPartialMockRecorder.h; sourceTree = "<group>"; };
+		C901D4E010DDE38300E72C90 /* OCPartialMockRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OCPartialMockRecorder.m; path = OCMock/OCPartialMockRecorder.m; sourceTree = "<group>"; };
+		C901D4E110DDE38300E72C90 /* OCProtocolMockObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OCProtocolMockObject.h; path = OCMock/OCProtocolMockObject.h; sourceTree = "<group>"; };
+		C901D4E210DDE38300E72C90 /* OCProtocolMockObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OCProtocolMockObject.m; path = OCMock/OCProtocolMockObject.m; sourceTree = "<group>"; };
+		C901D4FC10DDE3BF00E72C90 /* ApplicationTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ApplicationTests-Info.plist"; sourceTree = "<group>"; };
+		C901D53B10DDE48800E72C90 /* WhereIsMyPhoneAppDelegateTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WhereIsMyPhoneAppDelegateTests.m; path = Classes/WhereIsMyPhoneAppDelegateTests.m; sourceTree = "<group>"; };
+		C901D55B10DDE66D00E72C90 /* ApplicationTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ApplicationTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C907BCFD10DF37740096B9A5 /* WhereIsMyPhoneViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WhereIsMyPhoneViewControllerTests.m; path = Classes/WhereIsMyPhoneViewControllerTests.m; sourceTree = "<group>"; };
+		C907BD2910DF394E0096B9A5 /* NSObject+SupersequentImplementation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+SupersequentImplementation.h"; path = "Classes/NSObject+SupersequentImplementation.h"; sourceTree = "<group>"; };
+		C907BD2A10DF394E0096B9A5 /* NSObject+SupersequentImplementation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+SupersequentImplementation.m"; path = "Classes/NSObject+SupersequentImplementation.m"; sourceTree = "<group>"; };
+		C97E753210E6EA7C00CB9E83 /* LogicTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LogicTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C97E753310E6EA7C00CB9E83 /* LogicTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LogicTests-Info.plist"; sourceTree = "<group>"; };
+		C98499B210DEED8C00411F31 /* WhereIsMyPhoneTesting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhereIsMyPhoneTesting.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C98499B410DEED8C00411F31 /* WhereIsMyPhoneTesting-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "WhereIsMyPhoneTesting-Info.plist"; sourceTree = "<group>"; };
+		C9849E4710DF248300411F31 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		C9849E7E10DF255B00411F31 /* HTMLFormatString.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = HTMLFormatString.html; sourceTree = "<group>"; };
+		C9849E8110DF256800411F31 /* WebPageTestContent.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = WebPageTestContent.html; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1D60588F0D05DD3D006BFB54 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
+				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
+				288765A50DF7441C002DB57D /* CoreGraphics.framework in Frameworks */,
+				C9849E4810DF248300411F31 /* CoreLocation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C901D55810DDE66D00E72C90 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C907BD9F10DF3C200096B9A5 /* CoreLocation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C97E752F10E6EA7C00CB9E83 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C97E760910E6EAE200CB9E83 /* Foundation.framework in Frameworks */,
+				C97E760A10E6EAE200CB9E83 /* UIKit.framework in Frameworks */,
+				C97E760B10E6EAE200CB9E83 /* CoreGraphics.framework in Frameworks */,
+				C97E760C10E6EAE200CB9E83 /* CoreLocation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C9849A3E10DEEFAC00411F31 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9849E5A10DF249300411F31 /* CoreLocation.framework in Frameworks */,
+				C9849ACA10DEEFB300411F31 /* Foundation.framework in Frameworks */,
+				C9849ACB10DEEFB300411F31 /* UIKit.framework in Frameworks */,
+				C9849ACC10DEEFB300411F31 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		080E96DDFE201D6D7F000001 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				1D3623240D0F684500981E51 /* WhereIsMyPhoneAppDelegate.h */,
+				1D3623250D0F684500981E51 /* WhereIsMyPhoneAppDelegate.m */,
+				28D7ACF60DDB3853001CB0EB /* WhereIsMyPhoneViewController.h */,
+				28D7ACF70DDB3853001CB0EB /* WhereIsMyPhoneViewController.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		19C28FACFE9D520D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1D6058910D05DD3D006BFB54 /* WhereIsMyPhone.app */,
+				C901D55B10DDE66D00E72C90 /* ApplicationTests.octest */,
+				C98499B210DEED8C00411F31 /* WhereIsMyPhoneTesting.app */,
+				C97E753210E6EA7C00CB9E83 /* LogicTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
+			isa = PBXGroup;
+			children = (
+				C907BD4D10DF3A020096B9A5 /* Tests */,
+				080E96DDFE201D6D7F000001 /* Classes */,
+				29B97315FDCFA39411CA2CEA /* Other Sources */,
+				29B97317FDCFA39411CA2CEA /* Resources */,
+				29B97323FDCFA39411CA2CEA /* Frameworks */,
+				19C28FACFE9D520D11CA2CBB /* Products */,
+			);
+			name = CustomTemplate;
+			sourceTree = "<group>";
+		};
+		29B97315FDCFA39411CA2CEA /* Other Sources */ = {
+			isa = PBXGroup;
+			children = (
+				32CA4F630368D1EE00C91783 /* WhereIsMyPhone_Prefix.pch */,
+				29B97316FDCFA39411CA2CEA /* main.m */,
+			);
+			name = "Other Sources";
+			sourceTree = "<group>";
+		};
+		29B97317FDCFA39411CA2CEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C9849E8110DF256800411F31 /* WebPageTestContent.html */,
+				C9849E7E10DF255B00411F31 /* HTMLFormatString.html */,
+				2899E5210DE3E06400AC0155 /* WhereIsMyPhoneViewController.xib */,
+				28AD733E0D9D9553002E5188 /* MainWindow.xib */,
+				C901D4FC10DDE3BF00E72C90 /* ApplicationTests-Info.plist */,
+				C97E753310E6EA7C00CB9E83 /* LogicTests-Info.plist */,
+				8D1107310486CEB800E47090 /* WhereIsMyPhone-Info.plist */,
+				C98499B410DEED8C00411F31 /* WhereIsMyPhoneTesting-Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C9849E4710DF248300411F31 /* CoreLocation.framework */,
+				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
+				1D30AB110D05D00D00671497 /* Foundation.framework */,
+				288765A40DF7441C002DB57D /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C901D4AF10DDE35700E72C90 /* OCMock */ = {
+			isa = PBXGroup;
+			children = (
+				C901D4BC10DDE38300E72C90 /* NSInvocation+OCMAdditions.h */,
+				C901D4BD10DDE38300E72C90 /* NSInvocation+OCMAdditions.m */,
+				C901D4BE10DDE38300E72C90 /* NSMethodSignature+OCMAdditions.h */,
+				C901D4BF10DDE38300E72C90 /* NSMethodSignature+OCMAdditions.m */,
+				C901D4C010DDE38300E72C90 /* NSNotificationCenter+OCMAdditions.h */,
+				C901D4C110DDE38300E72C90 /* NSNotificationCenter+OCMAdditions.m */,
+				C901D4C210DDE38300E72C90 /* OCClassMockObject.h */,
+				C901D4C310DDE38300E72C90 /* OCClassMockObject.m */,
+				C901D4C410DDE38300E72C90 /* OCMArg.h */,
+				C901D4C510DDE38300E72C90 /* OCMArg.m */,
+				C901D4C610DDE38300E72C90 /* OCMBoxedReturnValueProvider.h */,
+				C901D4C710DDE38300E72C90 /* OCMBoxedReturnValueProvider.m */,
+				C901D4C810DDE38300E72C90 /* OCMConstraint.h */,
+				C901D4C910DDE38300E72C90 /* OCMConstraint.m */,
+				C901D4CA10DDE38300E72C90 /* OCMExceptionReturnValueProvider.h */,
+				C901D4CB10DDE38300E72C90 /* OCMExceptionReturnValueProvider.m */,
+				C901D4CC10DDE38300E72C90 /* OCMIndirectReturnValueProvider.h */,
+				C901D4CD10DDE38300E72C90 /* OCMIndirectReturnValueProvider.m */,
+				C901D4CE10DDE38300E72C90 /* OCMNotificationPoster.h */,
+				C901D4CF10DDE38300E72C90 /* OCMNotificationPoster.m */,
+				C901D4D010DDE38300E72C90 /* OCMObserverRecorder.h */,
+				C901D4D110DDE38300E72C90 /* OCMObserverRecorder.m */,
+				C901D4D210DDE38300E72C90 /* OCMock.h */,
+				C901D4D310DDE38300E72C90 /* OCMockObject.h */,
+				C901D4D410DDE38300E72C90 /* OCMockObject.m */,
+				C901D4D510DDE38300E72C90 /* OCMockRecorder.h */,
+				C901D4D610DDE38300E72C90 /* OCMockRecorder.m */,
+				C901D4D710DDE38300E72C90 /* OCMPassByRefSetter.h */,
+				C901D4D810DDE38300E72C90 /* OCMPassByRefSetter.m */,
+				C901D4D910DDE38300E72C90 /* OCMReturnValueProvider.h */,
+				C901D4DA10DDE38300E72C90 /* OCMReturnValueProvider.m */,
+				C901D4DB10DDE38300E72C90 /* OCObserverMockObject.h */,
+				C901D4DC10DDE38300E72C90 /* OCObserverMockObject.m */,
+				C901D4DD10DDE38300E72C90 /* OCPartialMockObject.h */,
+				C901D4DE10DDE38300E72C90 /* OCPartialMockObject.m */,
+				C901D4DF10DDE38300E72C90 /* OCPartialMockRecorder.h */,
+				C901D4E010DDE38300E72C90 /* OCPartialMockRecorder.m */,
+				C901D4E110DDE38300E72C90 /* OCProtocolMockObject.h */,
+				C901D4E210DDE38300E72C90 /* OCProtocolMockObject.m */,
+			);
+			name = OCMock;
+			sourceTree = "<group>";
+		};
+		C907BD4D10DF3A020096B9A5 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				C901D53B10DDE48800E72C90 /* WhereIsMyPhoneAppDelegateTests.m */,
+				C907BCFD10DF37740096B9A5 /* WhereIsMyPhoneViewControllerTests.m */,
+				C907BD2910DF394E0096B9A5 /* NSObject+SupersequentImplementation.h */,
+				C907BD2A10DF394E0096B9A5 /* NSObject+SupersequentImplementation.m */,
+				C901D4AF10DDE35700E72C90 /* OCMock */,
+			);
+			name = Tests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1D6058900D05DD3D006BFB54 /* WhereIsMyPhone */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "WhereIsMyPhone" */;
+			buildPhases = (
+				1D60588D0D05DD3D006BFB54 /* Resources */,
+				1D60588E0D05DD3D006BFB54 /* Sources */,
+				1D60588F0D05DD3D006BFB54 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WhereIsMyPhone;
+			productName = WhereIsMyPhone;
+			productReference = 1D6058910D05DD3D006BFB54 /* WhereIsMyPhone.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C901D55A10DDE66D00E72C90 /* ApplicationTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C901D56710DDE6B000E72C90 /* Build configuration list for PBXNativeTarget "ApplicationTests" */;
+			buildPhases = (
+				C901D55610DDE66D00E72C90 /* Resources */,
+				C901D55710DDE66D00E72C90 /* Sources */,
+				C901D55810DDE66D00E72C90 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C984988710DDFE0D00411F31 /* PBXTargetDependency */,
+			);
+			name = ApplicationTests;
+			productName = UnitTests;
+			productReference = C901D55B10DDE66D00E72C90 /* ApplicationTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+		C97E753110E6EA7C00CB9E83 /* LogicTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C97E753610E6EA7C00CB9E83 /* Build configuration list for PBXNativeTarget "LogicTests" */;
+			buildPhases = (
+				C97E752D10E6EA7C00CB9E83 /* Resources */,
+				C97E752E10E6EA7C00CB9E83 /* Sources */,
+				C97E752F10E6EA7C00CB9E83 /* Frameworks */,
+				C97E753010E6EA7C00CB9E83 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C97E755410E6EAC700CB9E83 /* PBXTargetDependency */,
+			);
+			name = LogicTests;
+			productName = LogicTests;
+			productReference = C97E753210E6EA7C00CB9E83 /* LogicTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+		C98499A310DEED8C00411F31 /* WhereIsMyPhoneTesting */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C98499AF10DEED8C00411F31 /* Build configuration list for PBXNativeTarget "WhereIsMyPhoneTesting" */;
+			buildPhases = (
+				C98499A410DEED8C00411F31 /* Resources */,
+				C9849AFB10DEF00D00411F31 /* Sources */,
+				C9849A3E10DEEFAC00411F31 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C98499C010DEEDA200411F31 /* PBXTargetDependency */,
+			);
+			name = WhereIsMyPhoneTesting;
+			productName = WhereIsMyPhone;
+			productReference = C98499B210DEED8C00411F31 /* WhereIsMyPhoneTesting.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		29B97313FDCFA39411CA2CEA /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "WhereIsMyPhone" */;
+			compatibilityVersion = "Xcode 3.1";
+			hasScannedForEncodings = 1;
+			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1D6058900D05DD3D006BFB54 /* WhereIsMyPhone */,
+				C97E753110E6EA7C00CB9E83 /* LogicTests */,
+				C901D55A10DDE66D00E72C90 /* ApplicationTests */,
+				C98499A310DEED8C00411F31 /* WhereIsMyPhoneTesting */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1D60588D0D05DD3D006BFB54 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28AD733F0D9D9553002E5188 /* MainWindow.xib in Resources */,
+				2899E5220DE3E06400AC0155 /* WhereIsMyPhoneViewController.xib in Resources */,
+				C9849E7F10DF255B00411F31 /* HTMLFormatString.html in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C901D55610DDE66D00E72C90 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9849E8210DF256800411F31 /* WebPageTestContent.html in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C97E752D10E6EA7C00CB9E83 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C97E754D10E6EAA000CB9E83 /* MainWindow.xib in Resources */,
+				C97E754E10E6EAA000CB9E83 /* WhereIsMyPhoneViewController.xib in Resources */,
+				C97E754F10E6EAA000CB9E83 /* HTMLFormatString.html in Resources */,
+				C97E755210E6EAB700CB9E83 /* WebPageTestContent.html in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C98499A410DEED8C00411F31 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C98499BC10DEED9D00411F31 /* ApplicationTests.octest in Resources */,
+				C98499A510DEED8C00411F31 /* MainWindow.xib in Resources */,
+				C98499A610DEED8C00411F31 /* WhereIsMyPhoneViewController.xib in Resources */,
+				C9849E8010DF255B00411F31 /* HTMLFormatString.html in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		C97E753010E6EA7C00CB9E83 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1D60588E0D05DD3D006BFB54 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
+				1D3623260D0F684500981E51 /* WhereIsMyPhoneAppDelegate.m in Sources */,
+				28D7ACF80DDB3853001CB0EB /* WhereIsMyPhoneViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C901D55710DDE66D00E72C90 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C901D56310DDE69200E72C90 /* WhereIsMyPhoneAppDelegateTests.m in Sources */,
+				C907BDBA10DF3C910096B9A5 /* WhereIsMyPhoneViewControllerTests.m in Sources */,
+				C901D59410DDE74A00E72C90 /* NSInvocation+OCMAdditions.m in Sources */,
+				C901D59510DDE74A00E72C90 /* NSMethodSignature+OCMAdditions.m in Sources */,
+				C901D59610DDE74A00E72C90 /* NSNotificationCenter+OCMAdditions.m in Sources */,
+				C901D59710DDE74A00E72C90 /* OCClassMockObject.m in Sources */,
+				C901D59810DDE74A00E72C90 /* OCMArg.m in Sources */,
+				C901D59910DDE74A00E72C90 /* OCMBoxedReturnValueProvider.m in Sources */,
+				C901D59A10DDE74A00E72C90 /* OCMConstraint.m in Sources */,
+				C901D59B10DDE74A00E72C90 /* OCMExceptionReturnValueProvider.m in Sources */,
+				C901D59C10DDE74A00E72C90 /* OCMIndirectReturnValueProvider.m in Sources */,
+				C901D59D10DDE74A00E72C90 /* OCMNotificationPoster.m in Sources */,
+				C901D59E10DDE74A00E72C90 /* OCMObserverRecorder.m in Sources */,
+				C901D59F10DDE74A00E72C90 /* OCMockObject.m in Sources */,
+				C901D5A010DDE74A00E72C90 /* OCMockRecorder.m in Sources */,
+				C901D5A110DDE74A00E72C90 /* OCMPassByRefSetter.m in Sources */,
+				C901D5A210DDE74A00E72C90 /* OCMReturnValueProvider.m in Sources */,
+				C901D5A310DDE74A00E72C90 /* OCObserverMockObject.m in Sources */,
+				C901D5A410DDE74A00E72C90 /* OCPartialMockObject.m in Sources */,
+				C901D5A510DDE74A00E72C90 /* OCPartialMockRecorder.m in Sources */,
+				C901D5A610DDE74A00E72C90 /* OCProtocolMockObject.m in Sources */,
+				C907BD2B10DF394E0096B9A5 /* NSObject+SupersequentImplementation.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C97E752E10E6EA7C00CB9E83 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C97E755010E6EAA500CB9E83 /* WhereIsMyPhoneAppDelegate.m in Sources */,
+				C97E755110E6EAA500CB9E83 /* WhereIsMyPhoneViewController.m in Sources */,
+				C97E753710E6EA8D00CB9E83 /* WhereIsMyPhoneAppDelegateTests.m in Sources */,
+				C97E753810E6EA8D00CB9E83 /* WhereIsMyPhoneViewControllerTests.m in Sources */,
+				C97E753910E6EA8D00CB9E83 /* NSInvocation+OCMAdditions.m in Sources */,
+				C97E753A10E6EA8D00CB9E83 /* NSMethodSignature+OCMAdditions.m in Sources */,
+				C97E753B10E6EA8D00CB9E83 /* NSNotificationCenter+OCMAdditions.m in Sources */,
+				C97E753C10E6EA8D00CB9E83 /* OCClassMockObject.m in Sources */,
+				C97E753D10E6EA8D00CB9E83 /* OCMArg.m in Sources */,
+				C97E753E10E6EA8D00CB9E83 /* OCMBoxedReturnValueProvider.m in Sources */,
+				C97E753F10E6EA8D00CB9E83 /* OCMConstraint.m in Sources */,
+				C97E754010E6EA8D00CB9E83 /* OCMExceptionReturnValueProvider.m in Sources */,
+				C97E754110E6EA8D00CB9E83 /* OCMIndirectReturnValueProvider.m in Sources */,
+				C97E754210E6EA8D00CB9E83 /* OCMNotificationPoster.m in Sources */,
+				C97E754310E6EA8D00CB9E83 /* OCMObserverRecorder.m in Sources */,
+				C97E754410E6EA8D00CB9E83 /* OCMockObject.m in Sources */,
+				C97E754510E6EA8D00CB9E83 /* OCMockRecorder.m in Sources */,
+				C97E754610E6EA8D00CB9E83 /* OCMPassByRefSetter.m in Sources */,
+				C97E754710E6EA8D00CB9E83 /* OCMReturnValueProvider.m in Sources */,
+				C97E754810E6EA8D00CB9E83 /* OCObserverMockObject.m in Sources */,
+				C97E754910E6EA8D00CB9E83 /* OCPartialMockObject.m in Sources */,
+				C97E754A10E6EA8D00CB9E83 /* OCPartialMockRecorder.m in Sources */,
+				C97E754B10E6EA8D00CB9E83 /* OCProtocolMockObject.m in Sources */,
+				C97E754C10E6EA8D00CB9E83 /* NSObject+SupersequentImplementation.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C9849AFB10DEF00D00411F31 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9849A3310DEEFA600411F31 /* main.m in Sources */,
+				C907BDB010DF3C860096B9A5 /* WhereIsMyPhoneAppDelegate.m in Sources */,
+				C9849A3510DEEFA600411F31 /* WhereIsMyPhoneViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C97E755410E6EAC700CB9E83 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1D6058900D05DD3D006BFB54 /* WhereIsMyPhone */;
+			targetProxy = C97E755310E6EAC700CB9E83 /* PBXContainerItemProxy */;
+		};
+		C984988710DDFE0D00411F31 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1D6058900D05DD3D006BFB54 /* WhereIsMyPhone */;
+			targetProxy = C984988610DDFE0D00411F31 /* PBXContainerItemProxy */;
+		};
+		C98499C010DEEDA200411F31 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C901D55A10DDE66D00E72C90 /* ApplicationTests */;
+			targetProxy = C98499BF10DEEDA200411F31 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		1D6058940D05DD3E006BFB54 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = WhereIsMyPhone_Prefix.pch;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INFOPLIST_FILE = "WhereIsMyPhone-Info.plist";
+				PRODUCT_NAME = WhereIsMyPhone;
+			};
+			name = Debug;
+		};
+		1D6058950D05DD3E006BFB54 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = WhereIsMyPhone_Prefix.pch;
+				INFOPLIST_FILE = "WhereIsMyPhone-Info.plist";
+				PRODUCT_NAME = WhereIsMyPhone;
+			};
+			name = Release;
+		};
+		C01FCF4F08A954540054247B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(SRCROOT)";
+				PREBINDING = NO;
+				PROVISIONING_PROFILE = "";
+				SDKROOT = iphoneos3.1.2;
+			};
+			name = Debug;
+		};
+		C01FCF5008A954540054247B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = iphoneos3.1.2;
+			};
+			name = Release;
+		};
+		C901D55C10DDE66D00E72C90 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/WhereIsMyPhone.app/WhereIsMyPhone";
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = APPLICATION_TESTS;
+				INFOPLIST_FILE = "ApplicationTests-Info.plist";
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					SenTestingKit,
+					"-framework",
+					UIKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = ApplicationTests;
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		C901D55D10DDE66D00E72C90 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				INFOPLIST_FILE = "ApplicationTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					SenTestingKit,
+					"-framework",
+					UIKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = UnitTests;
+				WRAPPER_EXTENSION = octest;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		C97E753410E6EA7C00CB9E83 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				INFOPLIST_FILE = "LogicTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					SenTestingKit,
+					"-framework",
+					UIKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = LogicTests;
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		C97E753510E6EA7C00CB9E83 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				INFOPLIST_FILE = "LogicTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					Foundation,
+					"-framework",
+					SenTestingKit,
+					"-framework",
+					UIKit,
+				);
+				PREBINDING = NO;
+				PRODUCT_NAME = LogicTests;
+				WRAPPER_EXTENSION = octest;
+				ZERO_LINK = NO;
+			};
+			name = Release;
+		};
+		C98499B010DEED8C00411F31 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = WhereIsMyPhone_Prefix.pch;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				INFOPLIST_FILE = "WhereIsMyPhoneTesting-Info.plist";
+				PRODUCT_NAME = WhereIsMyPhoneTesting;
+			};
+			name = Debug;
+		};
+		C98499B110DEED8C00411F31 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = WhereIsMyPhone_Prefix.pch;
+				INFOPLIST_FILE = "WhereIsMyPhoneTesting-Info.plist";
+				PRODUCT_NAME = WhereIsMyPhoneTesting;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1D6058960D05DD3E006BFB54 /* Build configuration list for PBXNativeTarget "WhereIsMyPhone" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1D6058940D05DD3E006BFB54 /* Debug */,
+				1D6058950D05DD3E006BFB54 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "WhereIsMyPhone" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C01FCF4F08A954540054247B /* Debug */,
+				C01FCF5008A954540054247B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C901D56710DDE6B000E72C90 /* Build configuration list for PBXNativeTarget "ApplicationTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C901D55C10DDE66D00E72C90 /* Debug */,
+				C901D55D10DDE66D00E72C90 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C97E753610E6EA7C00CB9E83 /* Build configuration list for PBXNativeTarget "LogicTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C97E753410E6EA7C00CB9E83 /* Debug */,
+				C97E753510E6EA7C00CB9E83 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C98499AF10DEED8C00411F31 /* Build configuration list for PBXNativeTarget "WhereIsMyPhoneTesting" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C98499B010DEED8C00411F31 /* Debug */,
+				C98499B110DEED8C00411F31 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 29B97313FDCFA39411CA2CEA /* Project object */;
+}
