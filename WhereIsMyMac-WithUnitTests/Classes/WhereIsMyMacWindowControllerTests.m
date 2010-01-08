@@ -21,7 +21,6 @@
 #import "NSObject+SupersequentImplementation.h"
 
 id mockLocationManager = nil;
-id mockWorkspace = nil;
 
 @implementation CLLocationManager (WhereIsMyMacWindowControllerTests)
 
@@ -31,20 +30,6 @@ id mockWorkspace = nil;
 	{
 		[self release];
 		return mockLocationManager;
-	}
-	
-	return invokeSupersequent();
-}
-
-@end
-
-@implementation NSWorkspace (WhereIsMyMacWindowControllerTests)
-
-+ (id)sharedWorkspace
-{
-	if (mockWorkspace)
-	{
-		return mockWorkspace;
 	}
 	
 	return invokeSupersequent();
