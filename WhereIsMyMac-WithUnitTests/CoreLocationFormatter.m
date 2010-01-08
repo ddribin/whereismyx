@@ -1,14 +1,14 @@
-#import "WhereIsMyMacLocationFormatter.h"
+#import "CoreLocationFormatter.h"
 
 
-@interface WhereIsMyMacLocationFormatter ()
+@interface CoreLocationFormatter ()
 @property (nonatomic, copy, readwrite) NSURL * googleMapsUrl;
 @property (nonatomic, copy, readwrite) NSString * formattedString;
 @property (nonatomic, copy, readwrite) NSString * locationLabel;
 @property (nonatomic, copy, readwrite) NSString * accuracyLabel;
 @end
 
-@implementation WhereIsMyMacLocationFormatter
+@implementation CoreLocationFormatter
 
 @synthesize googleMapsUrl = _googleMapsUrl;
 @synthesize formattedString = _formattedString;

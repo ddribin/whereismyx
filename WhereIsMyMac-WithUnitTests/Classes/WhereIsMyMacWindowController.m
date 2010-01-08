@@ -13,7 +13,7 @@
 //
 
 #import "WhereIsMyMacWindowController.h"
-#import "WhereIsMyMacLocationFormatter.h"
+#import "CoreLocationFormatter.h"
 
 
 @implementation WhereIsMyMacWindowController
@@ -35,7 +35,7 @@
 								pathForResource:@"HTMLFormatString" ofType:@"html"]
 							   encoding:NSUTF8StringEncoding
 							   error:NULL];
-	locationFormatter = [[WhereIsMyMacLocationFormatter alloc] initWithFormatString:formatString];
+	locationFormatter = [[CoreLocationFormatter alloc] initWithFormatString:formatString];
 }
 
 - (NSString *)windowNibName

@@ -1,8 +1,8 @@
-#import <Cocoa/Cocoa.h>
+#import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 
 
-@interface WhereIsMyMacLocationFormatter : NSObject
+@interface CoreLocationFormatter : NSObject
 {
 	NSString * _formatString;
 	NSURL * _googleMapsUrl;

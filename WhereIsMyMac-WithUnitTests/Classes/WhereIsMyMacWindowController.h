@@ -16,7 +16,7 @@
 #import <WebKit/WebKit.h>
 #import <CoreLocation/CoreLocation.h>
 
-@class WhereIsMyMacLocationFormatter;
+@class CoreLocationFormatter;
 
 @interface WhereIsMyMacWindowController : NSWindowController <CLLocationManagerDelegate>
 {
@@ -25,7 +25,7 @@
 	NSTextField *locationLabel;
 	NSTextField *accuracyLabel;
 	NSButton *openInBrowserButton;
-	WhereIsMyMacLocationFormatter *locationFormatter;
+	CoreLocationFormatter *locationFormatter;
 }
 
 @property (assign) IBOutlet WebView *webView;

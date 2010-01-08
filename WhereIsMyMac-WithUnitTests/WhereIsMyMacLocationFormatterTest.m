@@ -1,18 +1,18 @@
-#import "WhereIsMyMacLocationFormatter.h"
+#import "CoreLocationFormatter.h"
 
 #import <SenTestingKit/SenTestingKit.h>
 
 
-@interface WhereIsMyMacLocationFormatterTest : SenTestCase
+@interface CoreLocationFormatterTest : SenTestCase
 {
 }
 @end
 
-@implementation WhereIsMyMacLocationFormatterTest
+@implementation CoreLocationFormatterTest
 
-- (WhereIsMyMacLocationFormatter *)makeFormatterWithFormatString:(NSString *)formatString
+- (CoreLocationFormatter *)makeFormatterWithFormatString:(NSString *)formatString
 {
-	WhereIsMyMacLocationFormatter * formatter = [[WhereIsMyMacLocationFormatter alloc] initWithFormatString:formatString];
+	CoreLocationFormatter * formatter = [[CoreLocationFormatter alloc] initWithFormatString:formatString];
 	return [formatter autorelease];
 }
 
@@ -45,7 +45,7 @@
 
 - (void)testUpdateToLocation
 {
-	WhereIsMyMacLocationFormatter * formatter = [self makeFormatterWithFormatString:@"ll=%f,%f spn=%f,%f"];
+	CoreLocationFormatter * formatter = [self makeFormatterWithFormatString:@"ll=%f,%f spn=%f,%f"];
 	CLLocationCoordinate2D coord = {.latitude = -37.80996889, .longitude = 144.96326388};
 	CLLocation * location = [self makeLocationWithCoordinate:coord];
 	
@@ -63,7 +63,7 @@
 
 - (void)testUpdatedIgnoredWithSameCoordinates
 {
-	WhereIsMyMacLocationFormatter * formatter = [self makeFormatterWithFormatString:@"ll=%f,%f spn=%f,%f"];
+	CoreLocationFormatter * formatter = [self makeFormatterWithFormatString:@"ll=%f,%f spn=%f,%f"];
 	CLLocationCoordinate2D coord = {.latitude = -37.80996889, .longitude = 144.96326388};
 	CLLocation * location = [self makeLocationWithCoordinate:coord];
 	
@@ -74,7 +74,7 @@
 
 - (void)testUpdateFailed
 {
-	WhereIsMyMacLocationFormatter * formatter = [self makeFormatterWithFormatString:@"ll=%f,%f spn=%f,%f"];
+	CoreLocationFormatter * formatter = [self makeFormatterWithFormatString:@"ll=%f,%f spn=%f,%f"];
 	CLLocationCoordinate2D coord = {.latitude = -37.80996889, .longitude = 144.96326388};
 	CLLocation * location = [self makeLocationWithCoordinate:coord];
 	[formatter updateToLocation:location fromLocation:nil];
@@ -89,7 +89,7 @@
 
 - (void)testOpenInDefaultBrowser
 {
-	WhereIsMyMacLocationFormatter * formatter = [self makeFormatterWithFormatString:@"ll=%f,%f spn=%f,%f"];
+	CoreLocationFormatter * formatter = [self makeFormatterWithFormatString:@"ll=%f,%f spn=%f,%f"];
 	CLLocationCoordinate2D coord = {.latitude = -37.80996889, .longitude = 144.96326388};
 	CLLocation * location = [self makeLocationWithCoordinate:coord];
 	
