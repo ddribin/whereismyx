@@ -4,20 +4,20 @@
 
 @interface WhereIsMyMacLocationFormatter : NSObject
 {
-	NSString * _htmlFormatString;
+	NSString * _formatString;
 	NSURL * _googleMapsUrl;
-	NSString * _htmlString;
+	NSString * _formattedString;
 	NSString * _locationLabel;
 	NSString * _accuracyLabel;
 }
 
-@property (nonatomic, copy, readonly) NSString * htmlString;
+@property (nonatomic, copy, readonly) NSString * formattedString;
 @property (nonatomic, copy, readonly) NSString * locationLabel;
 @property (nonatomic, copy, readonly) NSString * accuracyLabel;
 
-- (id)initWithHtmlFormatString:(NSString *)htmlFormatString;
+- (id)initWithFormatString:(NSString *)htmlFormatString;
 
-- (BOOL)uppdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation;
+- (BOOL)updateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation;
 - (void)updateFailedWithError:(NSError *)error;
 
 - (NSURL *)googleMapsUrlForLocation:(CLLocation *)currentLocation;

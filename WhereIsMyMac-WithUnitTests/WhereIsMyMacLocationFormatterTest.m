@@ -1,12 +1,18 @@
-#import "WhereIsMyMacLocationFormatterTest.h"
 #import "WhereIsMyMacLocationFormatter.h"
 
+#import <SenTestingKit/SenTestingKit.h>
+
+
+@interface WhereIsMyMacLocationFormatterTest : SenTestCase
+{
+}
+@end
 
 @implementation WhereIsMyMacLocationFormatterTest
 
 - (WhereIsMyMacLocationFormatter *)makeFormatterWithFormatString:(NSString *)formatString
 {
-	WhereIsMyMacLocationFormatter * formatter = [[WhereIsMyMacLocationFormatter alloc] initWithHtmlFormatString:formatString];
+	WhereIsMyMacLocationFormatter * formatter = [[WhereIsMyMacLocationFormatter alloc] initWithFormatString:formatString];
 	return [formatter autorelease];
 }
 
@@ -43,10 +49,10 @@
 	CLLocationCoordinate2D coord = {.latitude = -37.80996889, .longitude = 144.96326388};
 	CLLocation * location = [self makeLocationWithCoordinate:coord];
 	
-	BOOL updated = [formatter uppdateToLocation:location fromLocation:nil];
+	BOOL updated = [formatter updateToLocation:location fromLocation:nil];
 	
 	STAssertTrue(updated, nil);
-	STAssertEqualObjects(formatter.htmlString,
+	STAssertEqualObjects(formatter.formattedString,
 						 @"ll=-37.809969,144.963264 spn=-0.000018,-0.000014", nil);
 	STAssertEqualObjects(formatter.locationLabel,
 						 @"-37.809969, 144.963264", nil);
@@ -61,7 +67,7 @@
 	CLLocationCoordinate2D coord = {.latitude = -37.80996889, .longitude = 144.96326388};
 	CLLocation * location = [self makeLocationWithCoordinate:coord];
 	
-	BOOL updated = [formatter uppdateToLocation:location fromLocation:location];
+	BOOL updated = [formatter updateToLocation:location fromLocation:location];
 	
 	STAssertFalse(updated, nil);
 }
@@ -71,11 +77,11 @@
 	WhereIsMyMacLocationFormatter * formatter = [self makeFormatterWithFormatString:@"ll=%f,%f spn=%f,%f"];
 	CLLocationCoordinate2D coord = {.latitude = -37.80996889, .longitude = 144.96326388};
 	CLLocation * location = [self makeLocationWithCoordinate:coord];
-	[formatter uppdateToLocation:location fromLocation:nil];
+	[formatter updateToLocation:location fromLocation:nil];
 	
 	[formatter updateFailedWithError:[self makeFakeErrorWithDescription:@"Some error description"]];
 	
-	STAssertEqualObjects(formatter.htmlString,
+	STAssertEqualObjects(formatter.formattedString,
 						 @"Location manager failed with error: Some error description", nil);
 	STAssertEqualObjects(formatter.locationLabel, @"", nil);
 	STAssertEqualObjects(formatter.accuracyLabel, @"", nil);

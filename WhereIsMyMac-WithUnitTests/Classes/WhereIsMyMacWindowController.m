@@ -35,7 +35,7 @@
 								pathForResource:@"HTMLFormatString" ofType:@"html"]
 							   encoding:NSUTF8StringEncoding
 							   error:NULL];
-	locationFormatter = [[WhereIsMyMacLocationFormatter alloc] initWithHtmlFormatString:formatString];
+	locationFormatter = [[WhereIsMyMacLocationFormatter alloc] initWithFormatString:formatString];
 }
 
 - (NSString *)windowNibName
@@ -53,7 +53,7 @@
 
 - (void)updateTheUI
 {
-	NSString *htmlString = [locationFormatter htmlString];
+	NSString *htmlString = [locationFormatter formattedString];
 	[[webView mainFrame] loadHTMLString:htmlString baseURL:nil];
 	[locationLabel setStringValue:locationFormatter.locationLabel];
 	[accuracyLabel setStringValue:locationFormatter.accuracyLabel];
@@ -63,7 +63,7 @@
 	didUpdateToLocation:(CLLocation *)newLocation
 	fromLocation:(CLLocation *)oldLocation
 {
-	if (![locationFormatter uppdateToLocation:newLocation fromLocation:oldLocation]) {
+	if (![locationFormatter updateToLocation:newLocation fromLocation:oldLocation]) {
 		return;
 	}
 	[self updateTheUI];
