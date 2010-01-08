@@ -77,10 +77,10 @@
 		55A19EF010F6EA6B0020688E /* WhereIsMyMacLocationFormatterTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WhereIsMyMacLocationFormatterTest.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* WhereIsMyMac-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "WhereIsMyMac-Info.plist"; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* WhereIsMyMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhereIsMyMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C90E7AEC10DC747500CCE376 /* WhereIsMyMacAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WhereIsMyMacAppDelegate.h; path = Classes/WhereIsMyMacAppDelegate.h; sourceTree = "<group>"; };
-		C90E7AED10DC747500CCE376 /* WhereIsMyMacAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WhereIsMyMacAppDelegate.m; path = Classes/WhereIsMyMacAppDelegate.m; sourceTree = "<group>"; };
-		C90E7AEE10DC747500CCE376 /* WhereIsMyMacWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WhereIsMyMacWindowController.h; path = Classes/WhereIsMyMacWindowController.h; sourceTree = "<group>"; };
-		C90E7AEF10DC747500CCE376 /* WhereIsMyMacWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WhereIsMyMacWindowController.m; path = Classes/WhereIsMyMacWindowController.m; sourceTree = "<group>"; };
+		C90E7AEC10DC747500CCE376 /* WhereIsMyMacAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WhereIsMyMacAppDelegate.h; sourceTree = "<group>"; };
+		C90E7AED10DC747500CCE376 /* WhereIsMyMacAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WhereIsMyMacAppDelegate.m; sourceTree = "<group>"; };
+		C90E7AEE10DC747500CCE376 /* WhereIsMyMacWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WhereIsMyMacWindowController.h; sourceTree = "<group>"; };
+		C90E7AEF10DC747500CCE376 /* WhereIsMyMacWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WhereIsMyMacWindowController.m; sourceTree = "<group>"; };
 		C90E7AF210DC747F00CCE376 /* WhereIsMyMacAppDelegateTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WhereIsMyMacAppDelegateTests.m; path = Classes/WhereIsMyMacAppDelegateTests.m; sourceTree = "<group>"; };
 		C90E7AF810DC74B600CCE376 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/WhereIsMyMacWindow.xib; sourceTree = "<group>"; };
 		C968AC6210DC984B00F35B40 /* WhereIsMyMacWindowControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WhereIsMyMacWindowControllerTests.m; path = Classes/WhereIsMyMacWindowControllerTests.m; sourceTree = "<group>"; };
@@ -130,7 +130,7 @@
 				55A19EC510F6E5F50020688E /* CoreLocationFormatter.h */,
 				55A19EC610F6E5F50020688E /* CoreLocationFormatter.m */,
 			);
-			name = Classes;
+			path = Classes;
 			sourceTree = "<group>";
 			usesTabs = 1;
 		};
