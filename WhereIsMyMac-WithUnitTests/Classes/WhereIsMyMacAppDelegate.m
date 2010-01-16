@@ -17,11 +17,27 @@
 
 @implementation WhereIsMyMacAppDelegate
 
-@synthesize windowController;
+@synthesize windowController = _windowController;
+
+- (id)init
+{
+	self = [super init];
+	if (self == nil)
+		return nil;
+	
+	_windowController = [[WhereIsMyMacWindowController alloc] init];
+	
+	return self;
+}
+
+- (void)dealloc
+{
+	[_windowController release];
+	[super dealloc];
+}
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
 	// Insert code here to initialize your application 
-	self.windowController = [[[WhereIsMyMacWindowController alloc] init] autorelease];
 	[[self.windowController window] makeKeyAndOrderFront:self];
 }
 

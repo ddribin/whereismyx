@@ -14,94 +14,71 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 #import <OCMock/OCMock.h>
+
 #import "WhereIsMyMacAppDelegate.h"
 #import "WhereIsMyMacWindowController.h"
-#import <objc/runtime.h>
-#import "NSObject+SupersequentImplementation.h"
 
-id mockWindowController = nil;
-
-@implementation WhereIsMyMacWindowController (WhereIsMyMacAppDelegateTests)
-
-- (id)init
-{
-	if (mockWindowController)
-	{
-		[self release];
-		return mockWindowController;
-	}
-	
-	return invokeSupersequent();
-}
-
-@end
 
 @interface WhereIsMyMacAppDelegateTests : SenTestCase 
 {
+	id _mockWindowController;
+	WhereIsMyMacAppDelegate * _appDelegate;
 }
 
 @end
 
 @implementation WhereIsMyMacAppDelegateTests
 
-- (void)testAppDelegate
+#pragma mark -
+#pragma mark Fixture
+
+- (void)setUp
 {
+	// Setup
+	_mockWindowController = [OCMockObject mockForClass:[WhereIsMyMacWindowController class]];
+	_appDelegate = [[[WhereIsMyMacAppDelegate alloc] init] autorelease];
+	_appDelegate.windowController = _mockWindowController;
+}
+
+- (void)tearDown
+{
+	// Verify
+	[_mockWindowController verify];
+}
+
+#pragma mark -
+#pragma mark Tests
+
+- (void)testAppDelegateIsCorrectClass
+{
+	// Execute
 	id appDelegate = [[NSApplication sharedApplication] delegate];
-	STAssertTrue([appDelegate isKindOfClass:[WhereIsMyMacAppDelegate class]],
-		@"Cannot find the application delegate.");
+	
+	// Verify
+	STAssertTrue([appDelegate isKindOfClass:[WhereIsMyMacAppDelegate class]], nil);
 }
 
-- (void)testApplicationDidFinishLaunching
+- (void)testApplicationDidFinishLaunchingMakesWindowKey
 {
-	WhereIsMyMacAppDelegate *appDelegate =
-		[[[WhereIsMyMacAppDelegate alloc] init] autorelease];
-
+	// Setup
 	id mockWindow = [OCMockObject mockForClass:[NSWindow class]];
-	[[mockWindow expect] makeKeyAndOrderFront:appDelegate];
-
-	mockWindowController = [OCMockObject mockForClass:[WhereIsMyMacWindowController class]];
-	[[[mockWindowController expect] andReturn:mockWindow] window];
-	NSUInteger preRetainCount = [mockWindowController retainCount];
-
-	[appDelegate applicationDidFinishLaunching:nil];
+	[[[_mockWindowController stub] andReturn:mockWindow] window];
+	[[mockWindow expect] makeKeyAndOrderFront:_appDelegate];
 	
-	[mockWindowController verify];
+	// Execute
+	[_appDelegate applicationDidFinishLaunching:nil];
+	
+	// Verify
 	[mockWindow verify];
-	
-	NSUInteger postRetainCount = [mockWindowController retainCount];
-	STAssertEquals(postRetainCount, preRetainCount + 1, @"Window controller not retained");
-
-	id windowController;
-	object_getInstanceVariable(appDelegate, "windowController", (void **)&windowController);
-	STAssertEqualObjects(windowController, mockWindowController,
-		@"windowController not set on appDelegate");
-
-	object_setInstanceVariable(appDelegate, "windowController", nil);
-	mockWindowController = nil;
 }
 
-- (void)testApplicationWillTerminate
+- (void)testApplicationWillTerminateClosesWindow
 {
-	WhereIsMyMacAppDelegate *appDelegate =
-		[[[WhereIsMyMacAppDelegate alloc] init] autorelease];
+	// Setup
+	[[_mockWindowController expect] close];
 	
-	id mockWindowController = [OCMockObject mockForClass:[WhereIsMyMacWindowController class]];
-	[mockWindowController retain];
-	object_setInstanceVariable(appDelegate, "windowController", mockWindowController);
-	
-	NSUInteger preRetainCount = [mockWindowController retainCount];
-	[[mockWindowController expect] close];
-
-	[appDelegate applicationWillTerminate:nil];
-	
-	[mockWindowController verify];
-
-	NSUInteger postRetainCount = [mockWindowController retainCount];
-	STAssertEquals(postRetainCount, preRetainCount - 1, @"Window controller not released");
-
-	id windowController;
-	object_getInstanceVariable(appDelegate, "windowController", (void **)&windowController);
-	STAssertNil(windowController, @"Window controller property not set to nil");
+	// Execute
+	[_appDelegate applicationWillTerminate:nil];
 }
 
 @end

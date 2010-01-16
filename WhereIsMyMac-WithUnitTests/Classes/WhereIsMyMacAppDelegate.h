@@ -17,7 +17,7 @@
 @class WhereIsMyMacWindowController;
 
 @interface WhereIsMyMacAppDelegate : NSObject <NSApplicationDelegate> {
-    WhereIsMyMacWindowController *window;
+    WhereIsMyMacWindowController * _windowController;
 }
 
 @property (nonatomic, retain) IBOutlet WhereIsMyMacWindowController *windowController;
