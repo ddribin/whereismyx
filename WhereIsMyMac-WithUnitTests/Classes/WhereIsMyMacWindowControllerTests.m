@@ -109,7 +109,7 @@
 	[_windowController locationFormatter:_mockLocationFormatter
 				didUpdateFormattedString:@"html string"
 						   locationLabel:@"location"
-						  accuractyLabel:@"accuracy"];
+						   accuracyLabel:@"accuracy"];
 	
 	// Verify
 	[mockWebFrame verify];

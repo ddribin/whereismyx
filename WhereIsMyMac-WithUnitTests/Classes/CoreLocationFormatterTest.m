@@ -72,7 +72,7 @@
     [[_mockDelegate expect] locationFormatter:_formatter
                      didUpdateFormattedString:@"ll=-37.809969,144.963264 spn=-0.000018,-0.000014"
                                 locationLabel:@"-37.809969, 144.963264"
-                               accuractyLabel:[NSString stringWithFormat:@"%f", kCLLocationAccuracyBest]];
+								accuracyLabel:[NSString stringWithFormat:@"%f", kCLLocationAccuracyBest]];
     
     // Execute
     [_formatter locationManager:nil didUpdateToLocation:location fromLocation:nil];
@@ -94,7 +94,7 @@
     [[_mockDelegate expect] locationFormatter:_formatter
                      didUpdateFormattedString:@"Location manager failed with error: Some error description"
                                 locationLabel:@""
-                               accuractyLabel:@""];
+								accuracyLabel:@""];
     
 
     // Execute

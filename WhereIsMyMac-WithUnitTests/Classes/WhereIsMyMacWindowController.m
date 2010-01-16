@@ -95,7 +95,7 @@
 - (void)locationFormatter:(CoreLocationFormatter *)formatter
  didUpdateFormattedString:(NSString *)formattedString_
             locationLabel:(NSString *)locationLabel_
-           accuractyLabel:(NSString *)accuracyLabel_;
+           accuracyLabel	:(NSString *)accuracyLabel_;
 {
     [[webView mainFrame] loadHTMLString:formattedString_ baseURL:nil];
     [locationLabel setStringValue:locationLabel_];

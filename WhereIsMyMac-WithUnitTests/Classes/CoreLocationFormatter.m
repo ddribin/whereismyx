@@ -75,7 +75,7 @@
     [_delegate locationFormatter:self
         didUpdateFormattedString:formattedString
                    locationLabel:locationLabel
-                  accuractyLabel:accuracyLabel];
+				   accuracyLabel:accuracyLabel];
 }
 
 - (void)locationManager:(CLLocationManager *)manager
@@ -87,7 +87,7 @@
     [_delegate locationFormatter:self
         didUpdateFormattedString:formattedString
                    locationLabel:@""
-                  accuractyLabel:@""];
+				   accuracyLabel:@""];
 }
 
 - (NSURL *)googleMapsUrlForLocation:(CLLocation *)location;

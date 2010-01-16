@@ -47,6 +47,6 @@
 - (void)locationFormatter:(CoreLocationFormatter *)formatter
  didUpdateFormattedString:(NSString *)formattedString
             locationLabel:(NSString *)locationLabel
-           accuractyLabel:(NSString *)accuracyLabel;
+			accuracyLabel:(NSString *)accuracyLabel;
 
 @end
