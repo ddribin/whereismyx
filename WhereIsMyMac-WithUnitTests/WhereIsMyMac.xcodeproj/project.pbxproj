@@ -23,7 +23,6 @@
 		C968AC8110DC9AB600F35B40 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C968AC8010DC9AB600F35B40 /* WebKit.framework */; };
 		C968AC9410DC9B8100F35B40 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C968AC6D10DC9A0D00F35B40 /* CoreLocation.framework */; };
 		C9849B3410DEF24400411F31 /* HTMLFormatString.html in Resources */ = {isa = PBXBuildFile; fileRef = C9849B3310DEF24400411F31 /* HTMLFormatString.html */; };
-		C9849B5710DEF7FE00411F31 /* NSObject+SupersequentImplementation.m in Sources */ = {isa = PBXBuildFile; fileRef = C9849B5510DEF7E700411F31 /* NSObject+SupersequentImplementation.m */; };
 		C9849CDB10DF0C2F00411F31 /* OCMock.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9F305E610DC736D004F4B59 /* OCMock.framework */; };
 		C9849D4310DF172300411F31 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C968AC8010DC9AB600F35B40 /* WebKit.framework */; };
 		C9849D4410DF173300411F31 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -87,8 +86,6 @@
 		C968AC6D10DC9A0D00F35B40 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		C968AC8010DC9AB600F35B40 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		C9849B3310DEF24400411F31 /* HTMLFormatString.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = HTMLFormatString.html; sourceTree = "<group>"; };
-		C9849B5410DEF7E700411F31 /* NSObject+SupersequentImplementation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SupersequentImplementation.h"; sourceTree = "<group>"; };
-		C9849B5510DEF7E700411F31 /* NSObject+SupersequentImplementation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SupersequentImplementation.m"; sourceTree = "<group>"; };
 		C9849D5E10DF17C200411F31 /* WebPageTestContent.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = WebPageTestContent.html; sourceTree = "<group>"; };
 		C9F305D810DC6EFE004F4B59 /* UnitTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9F305D910DC6EFE004F4B59 /* UnitTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "UnitTests-Info.plist"; sourceTree = "<group>"; };
@@ -215,8 +212,6 @@
 				C90E7AF210DC747F00CCE376 /* WhereIsMyMacAppDelegateTests.m */,
 				C968AC6210DC984B00F35B40 /* WhereIsMyMacWindowControllerTests.m */,
 				55A19EF010F6EA6B0020688E /* CoreLocationFormatterTest.m */,
-				C9849B5410DEF7E700411F31 /* NSObject+SupersequentImplementation.h */,
-				C9849B5510DEF7E700411F31 /* NSObject+SupersequentImplementation.m */,
 			);
 			name = Tests;
 			path = Classes;
@@ -339,7 +334,6 @@
 			files = (
 				C90E7AFF10DC74D100CCE376 /* WhereIsMyMacAppDelegateTests.m in Sources */,
 				C968AC7710DC9A4F00F35B40 /* WhereIsMyMacWindowControllerTests.m in Sources */,
-				C9849B5710DEF7FE00411F31 /* NSObject+SupersequentImplementation.m in Sources */,
 				55A19EF110F6EA6B0020688E /* CoreLocationFormatterTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
