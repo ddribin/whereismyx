@@ -34,9 +34,6 @@
 @property (assign) IBOutlet NSTextField *accuracyLabel;
 @property (assign) IBOutlet NSButton *openInBrowserButton;
 
-@property (nonatomic, retain) CLLocationManager * locationManager;
-@property (nonatomic, retain) CoreLocationFormatter * locationFormatter;
-
 - (id)init;
 - (id)initWithLocationManager:(CLLocationManager *)locationManager
             locationFormatter:(CoreLocationFormatter *)locationFormatter

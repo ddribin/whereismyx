@@ -23,9 +23,6 @@
 @synthesize accuracyLabel;
 @synthesize openInBrowserButton;
 
-@synthesize locationManager = _locationManager;
-@synthesize locationFormatter = _locationFormatter;
-
 - (id)init
 {
     CLLocationManager * locationManager = [[[CLLocationManager alloc] init] autorelease];
@@ -71,6 +68,7 @@
 - (void)close
 {
     [_locationManager stopUpdatingLocation];
+	[super close];
 }
 
 - (void)windowDidLoad

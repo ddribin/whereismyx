@@ -21,8 +21,8 @@
 
 @interface WhereIsMyMacAppDelegateTests : SenTestCase 
 {
-	id _mockWindowController;
-	WhereIsMyMacAppDelegate * _appDelegate;
+    id _mockWindowController;
+    WhereIsMyMacAppDelegate * _appDelegate;
 }
 
 @end
@@ -34,16 +34,16 @@
 
 - (void)setUp
 {
-	// Setup
-	_mockWindowController = [OCMockObject mockForClass:[WhereIsMyMacWindowController class]];
-	_appDelegate = [[[WhereIsMyMacAppDelegate alloc] init] autorelease];
-	_appDelegate.windowController = _mockWindowController;
+    // Setup
+    _mockWindowController = [OCMockObject mockForClass:[WhereIsMyMacWindowController class]];
+    _appDelegate = [[[WhereIsMyMacAppDelegate alloc] init] autorelease];
+    _appDelegate.windowController = _mockWindowController;
 }
 
 - (void)tearDown
 {
-	// Verify
-	[_mockWindowController verify];
+    // Verify
+    [_mockWindowController verify];
 }
 
 #pragma mark -
@@ -51,37 +51,37 @@
 
 - (void)testAppDelegateIsCorrectClass
 {
-	// Execute
-	id appDelegate = [[NSApplication sharedApplication] delegate];
-	
-	// Verify
-	STAssertTrue([appDelegate isKindOfClass:[WhereIsMyMacAppDelegate class]], nil);
+    // Execute
+    id appDelegate = [[NSApplication sharedApplication] delegate];
+    
+    // Verify
+    STAssertTrue([appDelegate isKindOfClass:[WhereIsMyMacAppDelegate class]], nil);
 }
 
 - (void)testApplicationDidFinishLaunchingMakesWindowKey
 {
-	// Setup
-	id mockWindow = [OCMockObject mockForClass:[NSWindow class]];
-	[[[_mockWindowController stub] andReturn:mockWindow] window];
-	[[mockWindow expect] makeKeyAndOrderFront:_appDelegate];
-	
-	// Execute
-	[_appDelegate applicationDidFinishLaunching:nil];
-	
-	// Verify
-	[mockWindow verify];
+    // Setup
+    id mockWindow = [OCMockObject mockForClass:[NSWindow class]];
+    [[[_mockWindowController stub] andReturn:mockWindow] window];
+    [[mockWindow expect] makeKeyAndOrderFront:_appDelegate];
+    
+    // Execute
+    [_appDelegate applicationDidFinishLaunching:nil];
+    
+    // Verify
+    [mockWindow verify];
 }
 
 - (void)testApplicationWillTerminateClosesAndNilsOutWindowController
 {
-	// Setup
-	[[_mockWindowController expect] close];
-	
-	// Execute
-	[_appDelegate applicationWillTerminate:nil];
-	
-	// Verify
-	STAssertNil(_appDelegate.windowController, nil);
+    // Setup
+    [[_mockWindowController expect] close];
+    
+    // Execute
+    [_appDelegate applicationWillTerminate:nil];
+    
+    // Verify
+    STAssertNil(_appDelegate.windowController, nil);
 }
 
 @end
