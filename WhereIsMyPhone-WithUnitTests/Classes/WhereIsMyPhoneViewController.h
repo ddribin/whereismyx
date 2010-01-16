@@ -14,10 +14,9 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import "CoreLocationFormatter.h"
 
-@class CoreLocationFormatter;
-
-@interface WhereIsMyPhoneViewController : UIViewController <CLLocationManagerDelegate>
+@interface WhereIsMyPhoneViewController : UIViewController <CoreLocationFormatterDelegate>
 {
 	IBOutlet UIWebView *webView;
 	CLLocationManager *locationManager;
@@ -26,6 +25,11 @@
 	IBOutlet UIButton *openInBrowserButton;
 	CoreLocationFormatter *locationFormatter;
 }
+
+- (void)locationFormatter:(CoreLocationFormatter *)formatter
+ didUpdateFormattedString:(NSString *)formattedString
+			locationLabel:(NSString *)locationLabel
+		   accuractyLabel:(NSString *)accuracyLabel;
 
 - (IBAction)openInDefaultBrowser:(id)sender;
 

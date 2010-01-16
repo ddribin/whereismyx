@@ -19,16 +19,17 @@
 
 - (void)viewDidLoad
 {
-	locationManager = [[CLLocationManager alloc] init];
-	locationManager.delegate = self;
-	[locationManager startUpdatingLocation];
 	NSString * formatString = [NSString 
 							   stringWithContentsOfFile:
 							   [[NSBundle bundleForClass:[self class]]
 								pathForResource:@"HTMLFormatString" ofType:@"html"]
 							   encoding:NSUTF8StringEncoding
 							   error:NULL];
-	locationFormatter = [[CoreLocationFormatter alloc] initWithFormatString:formatString];
+	locationFormatter = [[CoreLocationFormatter alloc] initWithDelegate:self formatString:formatString];
+
+	locationManager = [[CLLocationManager alloc] init];
+	locationManager.delegate = locationFormatter;
+	[locationManager startUpdatingLocation];
 }
 
 - (NSString *)nibName
@@ -43,32 +44,15 @@
 	[[UIApplication sharedApplication] openURL:externalBrowserURL];
 }
 
-- (void)updateUI
+- (void)locationFormatter:(CoreLocationFormatter *)formatter
+ didUpdateFormattedString:(NSString *)formattedString_
+			locationLabel:(NSString *)locationLabel_
+		   accuractyLabel:(NSString *)accuracyLabel_;
 {
 	// Load the HTML in the WebView and set the labels
-	NSString *htmlString = locationFormatter.formattedString;
-	[webView loadHTMLString:htmlString baseURL:nil];
-	[locationLabel setText:locationFormatter.locationLabel];
-	[accuracyLabel setText:locationFormatter.accuracyLabel];
-}
-
-- (void)locationManager:(CLLocationManager *)manager
-	didUpdateToLocation:(CLLocation *)newLocation
-	fromLocation:(CLLocation *)oldLocation
-{
-	// Ignore updates where nothing we care about changed
-	if (![locationFormatter updateToLocation:newLocation fromLocation:oldLocation])
-	{
-		return;
-	}
-	[self updateUI];
-}
-
-- (void)locationManager:(CLLocationManager *)manager
-	didFailWithError:(NSError *)error
-{
-	[locationFormatter updateFailedWithError:error];
-	[self updateUI];
+	[webView loadHTMLString:formattedString_ baseURL:nil];
+	[locationLabel setText:locationLabel_];
+	[accuracyLabel setText:accuracyLabel_];
 }
 
 - (void)dealloc

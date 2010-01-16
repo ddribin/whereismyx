@@ -1,23 +1,35 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 
+@class CoreLocationFormatter;
 
-@interface CoreLocationFormatter : NSObject
+@protocol CoreLocationFormatterDelegate <NSObject>
+
+- (void)locationFormatter:(CoreLocationFormatter *)formatter
+ didUpdateFormattedString:(NSString *)formattedString
+			locationLabel:(NSString *)locationLabel
+		   accuractyLabel:(NSString *)accuracyLabel;
+
+@end
+
+@interface CoreLocationFormatter : NSObject <CLLocationManagerDelegate>
 {
+	id<CoreLocationFormatterDelegate> _delegate;
 	NSString * _formatString;
-	NSString * _formattedString;
-	NSString * _locationLabel;
-	NSString * _accuracyLabel;
 }
 
-@property (nonatomic, copy, readonly) NSString * formattedString;
-@property (nonatomic, copy, readonly) NSString * locationLabel;
-@property (nonatomic, copy, readonly) NSString * accuracyLabel;
+@property (nonatomic, assign, readwrite) id<CoreLocationFormatterDelegate> delegate;
+@property (nonatomic, copy, readonly) NSString * formatString;
 
-- (id)initWithFormatString:(NSString *)htmlFormatString;
+- (id)initWithDelegate:(id<CoreLocationFormatterDelegate>)delegate
+		  formatString:(NSString *)htmlFormatString;
 
-- (BOOL)updateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation;
-- (void)updateFailedWithError:(NSError *)error;
+- (void)locationManager:(CLLocationManager *)manager
+	didUpdateToLocation:(CLLocation *)newLocation
+		   fromLocation:(CLLocation *)oldLocation;
+
+- (void)locationManager:(CLLocationManager *)manager
+	   didFailWithError:(NSError *)error;
 
 - (NSURL *)googleMapsUrlForLocation:(CLLocation *)currentLocation;
 
