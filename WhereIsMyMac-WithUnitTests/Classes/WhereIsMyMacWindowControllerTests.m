@@ -20,26 +20,12 @@
 #import <CoreLocation/CoreLocation.h>
 #import "NSObject+SupersequentImplementation.h"
 
-id mockLocationManager = nil;
-
-@implementation CLLocationManager (WhereIsMyMacWindowControllerTests)
-
-- (id)init
-{
-	if (mockLocationManager)
-	{
-		[self release];
-		return mockLocationManager;
-	}
-	
-	return invokeSupersequent();
-}
-
-@end
 
 @interface WhereIsMyMacWindowControllerTests : SenTestCase 
 {
-	WhereIsMyMacWindowController *windowController;
+	id _mockLocationManager;
+	id _mockLocationFormatter;
+	WhereIsMyMacWindowController * _windowController;
 }
 
 @end
@@ -48,30 +34,44 @@ id mockLocationManager = nil;
 
 - (void)setUp
 {
-	windowController = [[WhereIsMyMacWindowController alloc] init];
+	// Setup
+	_mockLocationManager = [OCMockObject mockForClass:[CLLocationManager class]];
+	_mockLocationFormatter = [OCMockObject mockForClass:[CoreLocationFormatter class]];
+	_windowController = [[WhereIsMyMacWindowController alloc]
+						 initWithLocationManager:_mockLocationManager
+						 locationFormatter:_mockLocationFormatter];
 }
 
 - (void)tearDown
 {
-	[windowController close];
-	[windowController release];
+	// Verify
+	[_mockLocationManager verify];
+	[_mockLocationFormatter verify];
+	
+	// Teardown
+	[_windowController close];
+	[_windowController release];
 }
 
 - (void)testLoadWindow
 {
-	[windowController loadWindow];
+	// Setup
+	[[_mockLocationManager stub] stopUpdatingLocation];
 
-	WebView *webView = windowController.webView;
-	NSTextField *locationLabel = windowController.locationLabel;
-	NSTextField *accuracyLabel = windowController.accuracyLabel;
-	NSButton *openInBrowserButton = windowController.openInBrowserButton;
+	// Execute
+	[_windowController loadWindow];
+
+	WebView *webView = _windowController.webView;
+	NSTextField *locationLabel = _windowController.locationLabel;
+	NSTextField *accuracyLabel = _windowController.accuracyLabel;
+	NSButton *openInBrowserButton = _windowController.openInBrowserButton;
 	
-	STAssertTrue([windowController isWindowLoaded], @"Window failed to load");
+	STAssertTrue([_windowController isWindowLoaded], @"Window failed to load");
 	STAssertNotNil(webView, @"webView ivar not set on load");
 	STAssertNotNil(locationLabel, @"locationLabel ivar not set on load");
 	STAssertNotNil(accuracyLabel, @"accuracyLabel ivar not set on load");
 	STAssertNotNil(openInBrowserButton, @"openInBrowserButton ivar not set on load");
-	STAssertEqualObjects(windowController, [openInBrowserButton target],
+	STAssertEqualObjects(_windowController, [openInBrowserButton target],
 		@"openInBrowserButton button doesn't target window controller");
 	STAssertTrue([openInBrowserButton action] == @selector(openInDefaultBrowser:),
 		@"openInBrowserButton button doesn't invoke openInDefaultBrowser:");
@@ -79,38 +79,28 @@ id mockLocationManager = nil;
 
 - (void)testWindowDidLoad
 {
-	mockLocationManager = [[OCMockObject mockForClass:[CLLocationManager class]] retain];
-	// TODO: Fix delegate expectation
-	[[mockLocationManager expect] setDelegate:OCMOCK_ANY];
-	[[mockLocationManager expect] startUpdatingLocation];
-	[[mockLocationManager stub] stopUpdatingLocation];
+	// Setup
+	[[_mockLocationManager expect] setDelegate:_mockLocationFormatter];
+	[[_mockLocationManager expect] startUpdatingLocation];
+	[[_mockLocationManager stub] stopUpdatingLocation];
 
-	[windowController windowDidLoad];
-
-	[mockLocationManager verify];
-	
-	windowController.locationManager = nil;
-	mockLocationManager = nil;
+	// Execute
+	[_windowController windowDidLoad];
 }
 
 - (void)testDealloc
 {
-	id mockLocationManager = [OCMockObject mockForClass:[CLLocationManager class]];
-	[mockLocationManager retain];
-	NSUInteger preRetainCount = [mockLocationManager retainCount];
-	windowController.locationManager = mockLocationManager;
-	
-	[[mockLocationManager expect] stopUpdatingLocation];
+	// Setup
+	NSUInteger preRetainCount = [_mockLocationManager retainCount];
+	[[_mockLocationManager expect] stopUpdatingLocation];
 
-	[windowController dealloc];
-	
-	[mockLocationManager verify];
+	// Execute
+	[_windowController release];
+	_windowController = nil;
 
-	NSUInteger postRetainCount = [mockLocationManager retainCount];
-	STAssertEquals(postRetainCount, preRetainCount, @"Location manager not released");
-	
-	windowController = nil;
-	[mockLocationManager release];
+	// Verify
+	NSUInteger postRetainCount = [_mockLocationManager retainCount];
+	STAssertEquals(postRetainCount, preRetainCount - 1, nil);
 }
 
 @end

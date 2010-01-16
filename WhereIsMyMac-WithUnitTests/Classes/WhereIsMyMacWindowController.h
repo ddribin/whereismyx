@@ -20,18 +20,25 @@
 @interface WhereIsMyMacWindowController : NSWindowController <CoreLocationFormatterDelegate>
 {
 	WebView *webView;
-	CLLocationManager *locationManager;
 	NSTextField *locationLabel;
 	NSTextField *accuracyLabel;
 	NSButton *openInBrowserButton;
-	CoreLocationFormatter *locationFormatter;
+	
+	CLLocationManager * _locationManager;
+	CoreLocationFormatter * _locationFormatter;
 }
 
 @property (assign) IBOutlet WebView *webView;
-@property (retain) CLLocationManager *locationManager;
 @property (assign) IBOutlet NSTextField *locationLabel;
 @property (assign) IBOutlet NSTextField *accuracyLabel;
 @property (assign) IBOutlet NSButton *openInBrowserButton;
+
+@property (nonatomic, retain) CLLocationManager * locationManager;
+@property (nonatomic, retain) CoreLocationFormatter * locationFormatter;
+
+- (id)init;
+- (id)initWithLocationManager:(CLLocationManager *)locationManager
+			locationFormatter:(CoreLocationFormatter *)locationFormatter;
 
 - (IBAction)openInDefaultBrowser:(id)sender;
 

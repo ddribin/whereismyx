@@ -19,25 +19,55 @@
 @implementation WhereIsMyMacWindowController
 
 @synthesize webView;
-@synthesize locationManager;
 @synthesize locationLabel;
 @synthesize accuracyLabel;
 @synthesize openInBrowserButton;
 
-- (void)windowDidLoad
+@synthesize locationManager = _locationManager;
+@synthesize locationFormatter = _locationFormatter;
+
+- (id)init
 {
-	locationManager = [[CLLocationManager alloc] init];
-	[locationManager startUpdatingLocation];
+	CLLocationManager * locationManager = [[[CLLocationManager alloc] init] autorelease];
+
 	NSString * formatString = [NSString 
 							   stringWithContentsOfFile:
 							   [[NSBundle bundleForClass:[self class]]
 								pathForResource:@"HTMLFormatString" ofType:@"html"]
 							   encoding:NSUTF8StringEncoding
 							   error:NULL];
-	locationFormatter = [[CoreLocationFormatter alloc] initWithDelegate:self
-														   formatString:formatString];
+	CoreLocationFormatter * locationFormatter =
+		[[[CoreLocationFormatter alloc] initWithDelegate:self
+											formatString:formatString] autorelease];
+	return [self initWithLocationManager:locationManager locationFormatter:locationFormatter];
+}
+
+- (id)initWithLocationManager:(CLLocationManager *)locationManager
+			locationFormatter:(CoreLocationFormatter *)locationFormatter
+{
+	self = [super init];
+	if (self == nil)
+		return nil;
 	
-	locationManager.delegate = locationFormatter;
+	_locationManager = [locationManager retain];
+	_locationFormatter = [locationFormatter retain];
+	
+	return self;
+}
+
+- (void)dealloc
+{
+	[_locationManager stopUpdatingLocation];
+	[_locationManager release];
+	[_locationFormatter release];
+	
+	[super dealloc];
+}
+
+- (void)windowDidLoad
+{
+	_locationManager.delegate = _locationFormatter;
+	[_locationManager startUpdatingLocation];
 }
 
 - (NSString *)windowNibName
@@ -47,8 +77,8 @@
 
 - (IBAction)openInDefaultBrowser:(id)sender
 {
-	CLLocation *currentLocation = locationManager.location;
-	NSURL *externalBrowserURL = [locationFormatter googleMapsUrlForLocation:currentLocation];
+	CLLocation *currentLocation = _locationManager.location;
+	NSURL *externalBrowserURL = [_locationFormatter googleMapsUrlForLocation:currentLocation];
 
 	[[NSWorkspace sharedWorkspace] openURL:externalBrowserURL];
 }
@@ -61,15 +91,6 @@
 	[[webView mainFrame] loadHTMLString:formattedString_ baseURL:nil];
 	[locationLabel setStringValue:locationLabel_];
 	[accuracyLabel setStringValue:accuracyLabel_];
-}
-
-- (void)dealloc
-{
-	[locationManager stopUpdatingLocation];
-	[locationManager release];
-	[locationFormatter release];
-	
-	[super dealloc];
 }
 
 @end
