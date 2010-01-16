@@ -88,6 +88,35 @@
 	[_windowController windowDidLoad];
 }
 
+- (void)testLocationFormatterDelegateUpdatesUI
+{
+	// Setup
+	id mockWebView = [OCMockObject mockForClass:[WebView class]];
+	id mockWebFrame = [OCMockObject mockForClass:[WebFrame class]];
+	id mockLocationLabel = [OCMockObject mockForClass:[NSTextField class]];
+	id mockAccuracyLabel = [OCMockObject mockForClass:[NSTextField class]];
+	
+	_windowController.webView = mockWebView;
+	_windowController.locationLabel = mockLocationLabel;
+	_windowController.accuracyLabel = mockAccuracyLabel;
+	
+	[[[mockWebView stub] andReturn:mockWebFrame] mainFrame];
+	[[mockWebFrame expect] loadHTMLString:@"html string" baseURL:nil];
+	[[mockLocationLabel expect] setStringValue:@"location"];
+	[[mockAccuracyLabel expect] setStringValue:@"accuracy"];
+	
+	// Execute
+	[_windowController locationFormatter:_mockLocationFormatter
+				didUpdateFormattedString:@"html string"
+						   locationLabel:@"location"
+						  accuractyLabel:@"accuracy"];
+	
+	// Verify
+	[mockWebFrame verify];
+	[mockLocationLabel verify];
+	[mockAccuracyLabel verify];
+}
+
 - (void)testOpenInDefaultBrowserActionOpensGoogleMapsUrlInWorkspace
 {
 	// Setup

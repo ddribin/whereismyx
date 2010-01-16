@@ -28,78 +28,78 @@
 
 - (id)init
 {
-	CLLocationManager * locationManager = [[[CLLocationManager alloc] init] autorelease];
+    CLLocationManager * locationManager = [[[CLLocationManager alloc] init] autorelease];
 
-	NSString * formatString = [NSString 
-							   stringWithContentsOfFile:
-							   [[NSBundle bundleForClass:[self class]]
-								pathForResource:@"HTMLFormatString" ofType:@"html"]
-							   encoding:NSUTF8StringEncoding
-							   error:NULL];
-	CoreLocationFormatter * locationFormatter =
-		[[[CoreLocationFormatter alloc] initWithDelegate:self
-											formatString:formatString] autorelease];
-	return [self initWithLocationManager:locationManager
-					   locationFormatter:locationFormatter
-							   workspace:[NSWorkspace sharedWorkspace]];
+    NSString * formatString = [NSString 
+                               stringWithContentsOfFile:
+                               [[NSBundle bundleForClass:[self class]]
+                                pathForResource:@"HTMLFormatString" ofType:@"html"]
+                               encoding:NSUTF8StringEncoding
+                               error:NULL];
+    CoreLocationFormatter * locationFormatter =
+        [[[CoreLocationFormatter alloc] initWithDelegate:self
+                                            formatString:formatString] autorelease];
+    return [self initWithLocationManager:locationManager
+                       locationFormatter:locationFormatter
+                               workspace:[NSWorkspace sharedWorkspace]];
 }
 
 - (id)initWithLocationManager:(CLLocationManager *)locationManager
-			locationFormatter:(CoreLocationFormatter *)locationFormatter
-					workspace:(NSWorkspace *)workspace;
+            locationFormatter:(CoreLocationFormatter *)locationFormatter
+                    workspace:(NSWorkspace *)workspace;
 {
-	self = [super init];
-	if (self == nil)
-		return nil;
-	
-	_locationManager = [locationManager retain];
-	_locationFormatter = [locationFormatter retain];
-	_workspace = [workspace retain];
-	
-	return self;
+    self = [super init];
+    if (self == nil)
+        return nil;
+    
+    _locationManager = [locationManager retain];
+    _locationFormatter = [locationFormatter retain];
+    _workspace = [workspace retain];
+    
+    return self;
 }
 
 - (void)dealloc
 {
-	[_locationManager release];
-	[_locationFormatter release];
-	[_workspace release];
-	
-	[super dealloc];
+    [_locationManager release];
+    [_locationFormatter release];
+    [_workspace release];
+    
+    [super dealloc];
 }
 
 - (void)close
 {
-	[_locationManager stopUpdatingLocation];
+    [_locationManager stopUpdatingLocation];
 }
 
 - (void)windowDidLoad
 {
-	_locationManager.delegate = _locationFormatter;
-	[_locationManager startUpdatingLocation];
+    _locationManager.delegate = _locationFormatter;
+    [_locationManager startUpdatingLocation];
 }
 
 - (NSString *)windowNibName
 {
-	return @"WhereIsMyMacWindow";
+    return @"WhereIsMyMacWindow";
 }
 
 - (IBAction)openInDefaultBrowser:(id)sender
 {
-	CLLocation *currentLocation = _locationManager.location;
-	NSURL *externalBrowserURL = [_locationFormatter googleMapsUrlForLocation:currentLocation];
+    CLLocation *currentLocation = _locationManager.location;
+    NSURL *externalBrowserURL = [_locationFormatter googleMapsUrlForLocation:currentLocation];
 
-	[_workspace openURL:externalBrowserURL];
+    [_workspace openURL:externalBrowserURL];
 }
 
 - (void)locationFormatter:(CoreLocationFormatter *)formatter
  didUpdateFormattedString:(NSString *)formattedString_
-			locationLabel:(NSString *)locationLabel_
-		   accuractyLabel:(NSString *)accuracyLabel_;
+            locationLabel:(NSString *)locationLabel_
+           accuractyLabel:(NSString *)accuracyLabel_;
 {
-	[[webView mainFrame] loadHTMLString:formattedString_ baseURL:nil];
-	[locationLabel setStringValue:locationLabel_];
-	[accuracyLabel setStringValue:accuracyLabel_];
+    [[webView mainFrame] loadHTMLString:formattedString_ baseURL:nil];
+    [locationLabel setStringValue:locationLabel_];
+    [accuracyLabel setStringValue:accuracyLabel_];
 }
 
 @end
