@@ -6,7 +6,7 @@
 
 @interface CoreLocationFormatterTest : SenTestCase
 {
-	id<CoreLocationFormatterDelegate> _mockDelegate;
+	id _mockDelegate;
 	CoreLocationFormatter * _formatter;
 }
 @end
@@ -56,7 +56,7 @@
 - (void)tearDown
 {
 	// Verify
-	[(id)_mockDelegate verify];
+	[_mockDelegate verify];
 	
 	// Teardown
 	[_formatter release]; _formatter = nil;
@@ -69,10 +69,10 @@
 {
 	// Setup
 	CLLocation * location = [self makeLocationWithLatitude:-37.80996889 longitude:144.96326388];
-	[[(id)_mockDelegate expect] locationFormatter:_formatter
-						 didUpdateFormattedString:@"ll=-37.809969,144.963264 spn=-0.000018,-0.000014"
-									locationLabel:@"-37.809969, 144.963264"
-								   accuractyLabel:[NSString stringWithFormat:@"%f", kCLLocationAccuracyBest]];
+	[[_mockDelegate expect] locationFormatter:_formatter
+					 didUpdateFormattedString:@"ll=-37.809969,144.963264 spn=-0.000018,-0.000014"
+								locationLabel:@"-37.809969, 144.963264"
+							   accuractyLabel:[NSString stringWithFormat:@"%f", kCLLocationAccuracyBest]];
 	
 	// Execute
 	[_formatter locationManager:nil didUpdateToLocation:location fromLocation:nil];
@@ -91,10 +91,10 @@
 {
 	// Setup
 	NSError * error = [self makeFakeErrorWithDescription:@"Some error description"];
-	[[(id)_mockDelegate expect] locationFormatter:_formatter
-						 didUpdateFormattedString:@"Location manager failed with error: Some error description"
-									locationLabel:@""
-								   accuractyLabel:@""];
+	[[_mockDelegate expect] locationFormatter:_formatter
+					 didUpdateFormattedString:@"Location manager failed with error: Some error description"
+								locationLabel:@""
+							   accuractyLabel:@""];
 	
 
 	// Execute
