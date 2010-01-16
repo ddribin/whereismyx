@@ -27,7 +27,6 @@
 - (void)windowDidLoad
 {
 	locationManager = [[CLLocationManager alloc] init];
-	locationManager.delegate = self;
 	[locationManager startUpdatingLocation];
 	NSString * formatString = [NSString 
 							   stringWithContentsOfFile:
@@ -35,7 +34,10 @@
 								pathForResource:@"HTMLFormatString" ofType:@"html"]
 							   encoding:NSUTF8StringEncoding
 							   error:NULL];
-	locationFormatter = [[CoreLocationFormatter alloc] initWithFormatString:formatString];
+	locationFormatter = [[CoreLocationFormatter alloc] initWithDelegate:self
+														   formatString:formatString];
+	
+	locationManager.delegate = locationFormatter;
 }
 
 - (NSString *)windowNibName
@@ -49,6 +51,16 @@
 	NSURL *externalBrowserURL = [locationFormatter googleMapsUrlForLocation:currentLocation];
 
 	[[NSWorkspace sharedWorkspace] openURL:externalBrowserURL];
+}
+
+- (void)locationFormatter:(CoreLocationFormatter *)formatter
+ didUpdateFormattedString:(NSString *)formattedString_
+			locationLabel:(NSString *)locationLabel_
+		   accuractyLabel:(NSString *)accuracyLabel_;
+{
+	[[webView mainFrame] loadHTMLString:formattedString_ baseURL:nil];
+	[locationLabel setStringValue:locationLabel_];
+	[accuracyLabel setStringValue:accuracyLabel_];
 }
 
 - (void)updateTheUI

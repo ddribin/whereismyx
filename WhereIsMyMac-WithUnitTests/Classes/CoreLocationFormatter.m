@@ -31,6 +31,20 @@
 	return latitudeRange * cos(aLocation.coordinate.latitude * M_PI / 180.0);
 }
 
+- (id)initWithDelegate:(id<CoreLocationFormatterDelegate>)delegate
+		  formatString:(NSString *)htmlFormatString;
+{
+	self = [super init];
+	if (self == nil) {
+		return nil;
+	}
+	
+	_delegate = delegate;
+	_formatString = [htmlFormatString copy];
+	
+	return self;
+}
+
 - (id)initWithFormatString:(NSString *)htmlFormatString;
 {
 	self = [super init];
@@ -50,6 +64,47 @@
 	[_locationLabel release];
 	[_accuracyLabel release];
 	[super dealloc];
+}
+
+- (void)locationManager:(CLLocationManager *)manager
+	didUpdateToLocation:(CLLocation *)newLocation
+		   fromLocation:(CLLocation *)oldLocation;
+{
+	// Ignore updates where nothing we care about changed
+	if (newLocation.coordinate.longitude == oldLocation.coordinate.longitude &&
+		newLocation.coordinate.latitude == oldLocation.coordinate.latitude &&
+		newLocation.horizontalAccuracy == oldLocation.horizontalAccuracy)
+	{
+		return;
+	}
+	
+	NSString * formattedString = [NSString stringWithFormat:_formatString,
+								  newLocation.coordinate.latitude,
+								  newLocation.coordinate.longitude,
+								  [[self class] latitudeRangeForLocation:newLocation],
+								  [[self class] longitudeRangeForLocation:newLocation]];
+	
+	NSString * locationLabel = [NSString stringWithFormat:@"%f, %f",
+								newLocation.coordinate.latitude, newLocation.coordinate.longitude];
+	NSString * accuracyLabel = [NSString stringWithFormat:@"%f",
+								newLocation.horizontalAccuracy];
+
+	[_delegate locationFormatter:self
+		didUpdateFormattedString:formattedString
+				   locationLabel:locationLabel
+				  accuractyLabel:accuracyLabel];
+}
+
+- (void)locationManager:(CLLocationManager *)manager
+	   didFailWithError:(NSError *)error;
+{
+	NSString * formattedString = [NSString stringWithFormat:
+								  NSLocalizedString(@"Location manager failed with error: %@", nil),
+								  [error localizedDescription]];
+	[_delegate locationFormatter:self
+		didUpdateFormattedString:formattedString
+				   locationLabel:@""
+				  accuractyLabel:@""];
 }
 
 - (BOOL)updateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation;
