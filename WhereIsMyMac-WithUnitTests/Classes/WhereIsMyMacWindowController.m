@@ -63,31 +63,6 @@
 	[accuracyLabel setStringValue:accuracyLabel_];
 }
 
-- (void)updateTheUI
-{
-	NSString *htmlString = [locationFormatter formattedString];
-	[[webView mainFrame] loadHTMLString:htmlString baseURL:nil];
-	[locationLabel setStringValue:locationFormatter.locationLabel];
-	[accuracyLabel setStringValue:locationFormatter.accuracyLabel];
-}
-
-- (void)locationManager:(CLLocationManager *)manager
-	didUpdateToLocation:(CLLocation *)newLocation
-	fromLocation:(CLLocation *)oldLocation
-{
-	if (![locationFormatter updateToLocation:newLocation fromLocation:oldLocation]) {
-		return;
-	}
-	[self updateTheUI];
-}
-
-- (void)locationManager:(CLLocationManager *)manager
-	didFailWithError:(NSError *)error
-{
-	[locationFormatter updateFailedWithError:error];
-	[self updateTheUI];
-}
-
 - (void)dealloc
 {
 	[locationManager stopUpdatingLocation];

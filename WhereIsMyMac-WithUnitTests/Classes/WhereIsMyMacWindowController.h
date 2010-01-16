@@ -17,7 +17,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import "CoreLocationFormatter.h"
 
-@interface WhereIsMyMacWindowController : NSWindowController <CLLocationManagerDelegate, CoreLocationFormatterDelegate>
+@interface WhereIsMyMacWindowController : NSWindowController <CoreLocationFormatterDelegate>
 {
 	WebView *webView;
 	CLLocationManager *locationManager;

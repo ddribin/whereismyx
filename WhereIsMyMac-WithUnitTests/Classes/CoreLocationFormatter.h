@@ -16,19 +16,13 @@
 {
 	id<CoreLocationFormatterDelegate> _delegate;
 	NSString * _formatString;
-	NSString * _formattedString;
-	NSString * _locationLabel;
-	NSString * _accuracyLabel;
 }
 
-@property (nonatomic, copy, readonly) NSString * formattedString;
-@property (nonatomic, copy, readonly) NSString * locationLabel;
-@property (nonatomic, copy, readonly) NSString * accuracyLabel;
+@property (nonatomic, assign, readwrite) id<CoreLocationFormatterDelegate> delegate;
+@property (nonatomic, copy, readonly) NSString * formatString;
 
 - (id)initWithDelegate:(id<CoreLocationFormatterDelegate>)delegate
 		  formatString:(NSString *)htmlFormatString;
-
-- (id)initWithFormatString:(NSString *)htmlFormatString;
 
 - (void)locationManager:(CLLocationManager *)manager
 	didUpdateToLocation:(CLLocation *)newLocation
@@ -36,9 +30,6 @@
 
 - (void)locationManager:(CLLocationManager *)manager
 	   didFailWithError:(NSError *)error;
-
-- (BOOL)updateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation;
-- (void)updateFailedWithError:(NSError *)error;
 
 - (NSURL *)googleMapsUrlForLocation:(CLLocation *)currentLocation;
 

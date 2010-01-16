@@ -2,16 +2,14 @@
 
 
 @interface CoreLocationFormatter ()
-@property (nonatomic, copy, readwrite) NSString * formattedString;
-@property (nonatomic, copy, readwrite) NSString * locationLabel;
-@property (nonatomic, copy, readwrite) NSString * accuracyLabel;
++ (double)latitudeRangeForLocation:(CLLocation *)aLocation;
++ (double)longitudeRangeForLocation:(CLLocation *)aLocation;
 @end
 
 @implementation CoreLocationFormatter
 
-@synthesize formattedString = _formattedString;
-@synthesize locationLabel = _locationLabel;
-@synthesize accuracyLabel = _accuracyLabel;
+@synthesize delegate = _delegate;
+@synthesize formatString = _formatString;
 
 
 + (double)latitudeRangeForLocation:(CLLocation *)aLocation
@@ -45,24 +43,9 @@
 	return self;
 }
 
-- (id)initWithFormatString:(NSString *)htmlFormatString;
-{
-	self = [super init];
-	if (self == nil) {
-		return nil;
-	}
-	
-	_formatString = [htmlFormatString copy];
-	
-	return self;
-}
-
 - (void)dealloc
 {
 	[_formatString release];
-	[_formattedString release];
-	[_locationLabel release];
-	[_accuracyLabel release];
 	[super dealloc];
 }
 
@@ -105,39 +88,6 @@
 		didUpdateFormattedString:formattedString
 				   locationLabel:@""
 				  accuractyLabel:@""];
-}
-
-- (BOOL)updateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation;
-{
-	// Ignore updates where nothing we care about changed
-	if (newLocation.coordinate.longitude == oldLocation.coordinate.longitude &&
-		newLocation.coordinate.latitude == oldLocation.coordinate.latitude &&
-		newLocation.horizontalAccuracy == oldLocation.horizontalAccuracy)
-	{
-		return NO;
-	}
-	
-	NSString *htmlString = [NSString stringWithFormat:_formatString,
-							newLocation.coordinate.latitude,
-							newLocation.coordinate.longitude,
-							[[self class] latitudeRangeForLocation:newLocation],
-							[[self class] longitudeRangeForLocation:newLocation]];
-	
-	self.formattedString = htmlString;
-	self.locationLabel = [NSString stringWithFormat:@"%f, %f",
-						  newLocation.coordinate.latitude, newLocation.coordinate.longitude];
-	self.accuracyLabel = [NSString stringWithFormat:@"%f",
-						  newLocation.horizontalAccuracy];
-	return YES;
-}
-
-- (void)updateFailedWithError:(NSError *)error;
-{
-	self.formattedString = [NSString stringWithFormat:
-					   NSLocalizedString(@"Location manager failed with error: %@", nil),
-					   [error localizedDescription]];
-	self.locationLabel = @"";
-	self.accuracyLabel = @"";
 }
 
 - (NSURL *)googleMapsUrlForLocation:(CLLocation *)location;
