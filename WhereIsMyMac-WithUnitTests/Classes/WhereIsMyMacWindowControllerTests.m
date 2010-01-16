@@ -24,6 +24,7 @@
 {
 	id _mockLocationManager;
 	id _mockLocationFormatter;
+	id _mockWorkspace;
 	WhereIsMyMacWindowController * _windowController;
 }
 
@@ -36,9 +37,11 @@
 	// Setup
 	_mockLocationManager = [OCMockObject mockForClass:[CLLocationManager class]];
 	_mockLocationFormatter = [OCMockObject mockForClass:[CoreLocationFormatter class]];
+	_mockWorkspace = [OCMockObject mockForClass:[NSWorkspace class]];
 	_windowController = [[WhereIsMyMacWindowController alloc]
 						 initWithLocationManager:_mockLocationManager
-						 locationFormatter:_mockLocationFormatter];
+						 locationFormatter:_mockLocationFormatter
+						 workspace:_mockWorkspace];
 }
 
 - (void)tearDown
@@ -46,10 +49,11 @@
 	// Verify
 	[_mockLocationManager verify];
 	[_mockLocationFormatter verify];
+	[_mockWorkspace verify];
 	
 	// Teardown
 	[_windowController close];
-	[_windowController release];
+	[_windowController release]; _windowController = nil;
 }
 
 - (void)testOutletConnectionsAfterLoadWindow
@@ -81,6 +85,19 @@
 
 	// Execute
 	[_windowController windowDidLoad];
+}
+
+- (void)testOpenInDefaultBrowserActionOpensGoogleMapsUrlInWorkspace
+{
+	// Setup
+	[[_mockLocationManager stub] stopUpdatingLocation];
+	[[[_mockLocationManager stub] andReturn:nil] location];
+	NSURL * dummyUrl = [NSURL URLWithString:@"http://example.com/"];
+	[[[_mockLocationFormatter stub] andReturn:dummyUrl] googleMapsUrlForLocation:nil];
+	[[_mockWorkspace expect] openURL:dummyUrl];
+	
+	// Execute
+	[_windowController openInDefaultBrowser:nil];
 }
 
 - (void)testDeallocStopsLocationManager

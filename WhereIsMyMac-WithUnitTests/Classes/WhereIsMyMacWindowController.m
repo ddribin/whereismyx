@@ -39,11 +39,14 @@
 	CoreLocationFormatter * locationFormatter =
 		[[[CoreLocationFormatter alloc] initWithDelegate:self
 											formatString:formatString] autorelease];
-	return [self initWithLocationManager:locationManager locationFormatter:locationFormatter];
+	return [self initWithLocationManager:locationManager
+					   locationFormatter:locationFormatter
+							   workspace:[NSWorkspace sharedWorkspace]];
 }
 
 - (id)initWithLocationManager:(CLLocationManager *)locationManager
 			locationFormatter:(CoreLocationFormatter *)locationFormatter
+					workspace:(NSWorkspace *)workspace;
 {
 	self = [super init];
 	if (self == nil)
@@ -51,6 +54,7 @@
 	
 	_locationManager = [locationManager retain];
 	_locationFormatter = [locationFormatter retain];
+	_workspace = [workspace retain];
 	
 	return self;
 }
@@ -60,6 +64,7 @@
 	[_locationManager stopUpdatingLocation];
 	[_locationManager release];
 	[_locationFormatter release];
+	[_workspace release];
 	
 	[super dealloc];
 }
@@ -80,7 +85,7 @@
 	CLLocation *currentLocation = _locationManager.location;
 	NSURL *externalBrowserURL = [_locationFormatter googleMapsUrlForLocation:currentLocation];
 
-	[[NSWorkspace sharedWorkspace] openURL:externalBrowserURL];
+	[_workspace openURL:externalBrowserURL];
 }
 
 - (void)locationFormatter:(CoreLocationFormatter *)formatter

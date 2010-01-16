@@ -26,6 +26,7 @@
 	
 	CLLocationManager * _locationManager;
 	CoreLocationFormatter * _locationFormatter;
+	NSWorkspace * _workspace;
 }
 
 @property (assign) IBOutlet WebView *webView;
@@ -38,7 +39,8 @@
 
 - (id)init;
 - (id)initWithLocationManager:(CLLocationManager *)locationManager
-			locationFormatter:(CoreLocationFormatter *)locationFormatter;
+			locationFormatter:(CoreLocationFormatter *)locationFormatter
+					workspace:(NSWorkspace *)workspace;
 
 - (IBAction)openInDefaultBrowser:(id)sender;
 
