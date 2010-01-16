@@ -72,13 +72,16 @@
 	[mockWindow verify];
 }
 
-- (void)testApplicationWillTerminateClosesWindow
+- (void)testApplicationWillTerminateClosesAndNilsOutWindowController
 {
 	// Setup
 	[[_mockWindowController expect] close];
 	
 	// Execute
 	[_appDelegate applicationWillTerminate:nil];
+	
+	// Verify
+	STAssertNil(_appDelegate.windowController, nil);
 }
 
 @end
