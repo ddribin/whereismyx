@@ -14,11 +14,10 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 #import <OCMock/OCMock.h>
+#import <CoreLocation/CoreLocation.h>
+
 #import "WhereIsMyMacAppDelegate.h"
 #import "WhereIsMyMacWindowController.h"
-#import <objc/runtime.h>
-#import <CoreLocation/CoreLocation.h>
-#import "NSObject+SupersequentImplementation.h"
 
 
 @interface WhereIsMyMacWindowControllerTests : SenTestCase 
@@ -53,7 +52,7 @@
 	[_windowController release];
 }
 
-- (void)testLoadWindow
+- (void)testOutletConnectionsAfterLoadWindow
 {
 	// Setup
 	[[_mockLocationManager stub] stopUpdatingLocation];
@@ -61,23 +60,19 @@
 	// Execute
 	[_windowController loadWindow];
 
-	WebView *webView = _windowController.webView;
-	NSTextField *locationLabel = _windowController.locationLabel;
-	NSTextField *accuracyLabel = _windowController.accuracyLabel;
-	NSButton *openInBrowserButton = _windowController.openInBrowserButton;
+	// Verify
+	STAssertTrue([_windowController isWindowLoaded], nil);
+	STAssertNotNil(_windowController.webView, nil);
+	STAssertNotNil(_windowController.locationLabel, nil);
+	STAssertNotNil(_windowController.accuracyLabel, nil);
 	
-	STAssertTrue([_windowController isWindowLoaded], @"Window failed to load");
-	STAssertNotNil(webView, @"webView ivar not set on load");
-	STAssertNotNil(locationLabel, @"locationLabel ivar not set on load");
-	STAssertNotNil(accuracyLabel, @"accuracyLabel ivar not set on load");
-	STAssertNotNil(openInBrowserButton, @"openInBrowserButton ivar not set on load");
-	STAssertEqualObjects(_windowController, [openInBrowserButton target],
-		@"openInBrowserButton button doesn't target window controller");
-	STAssertTrue([openInBrowserButton action] == @selector(openInDefaultBrowser:),
-		@"openInBrowserButton button doesn't invoke openInDefaultBrowser:");
+	NSButton *openInBrowserButton = _windowController.openInBrowserButton;
+	STAssertNotNil(openInBrowserButton, nil);
+	STAssertEqualObjects(_windowController, [openInBrowserButton target], nil);
+	STAssertEquals([openInBrowserButton action],@selector(openInDefaultBrowser:), nil);
 }
 
-- (void)testWindowDidLoad
+- (void)testWindowDidLoadStartsLocationManager
 {
 	// Setup
 	[[_mockLocationManager expect] setDelegate:_mockLocationFormatter];
@@ -88,7 +83,7 @@
 	[_windowController windowDidLoad];
 }
 
-- (void)testDealloc
+- (void)testDeallocStopsLocationManager
 {
 	// Setup
 	NSUInteger preRetainCount = [_mockLocationManager retainCount];
