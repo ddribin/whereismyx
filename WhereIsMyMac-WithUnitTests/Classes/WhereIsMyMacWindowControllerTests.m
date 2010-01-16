@@ -32,6 +32,9 @@
 
 @implementation WhereIsMyMacWindowControllerTests
 
+#pragma mark -
+#pragma mark Fixture
+
 - (void)setUp
 {
 	// Setup
@@ -52,15 +55,14 @@
 	[_mockWorkspace verify];
 	
 	// Teardown
-	[_windowController close];
 	[_windowController release]; _windowController = nil;
 }
 
+#pragma mark -
+#pragma mark Tests
+
 - (void)testOutletConnectionsAfterLoadWindow
 {
-	// Setup
-	[[_mockLocationManager stub] stopUpdatingLocation];
-
 	// Execute
 	[_windowController loadWindow];
 
@@ -81,7 +83,6 @@
 	// Setup
 	[[_mockLocationManager expect] setDelegate:_mockLocationFormatter];
 	[[_mockLocationManager expect] startUpdatingLocation];
-	[[_mockLocationManager stub] stopUpdatingLocation];
 
 	// Execute
 	[_windowController windowDidLoad];
@@ -90,7 +91,6 @@
 - (void)testOpenInDefaultBrowserActionOpensGoogleMapsUrlInWorkspace
 {
 	// Setup
-	[[_mockLocationManager stub] stopUpdatingLocation];
 	[[[_mockLocationManager stub] andReturn:nil] location];
 	NSURL * dummyUrl = [NSURL URLWithString:@"http://example.com/"];
 	[[[_mockLocationFormatter stub] andReturn:dummyUrl] googleMapsUrlForLocation:nil];
@@ -100,19 +100,13 @@
 	[_windowController openInDefaultBrowser:nil];
 }
 
-- (void)testDeallocStopsLocationManager
+- (void)testCloseStopsLocationManager
 {
 	// Setup
-	NSUInteger preRetainCount = [_mockLocationManager retainCount];
 	[[_mockLocationManager expect] stopUpdatingLocation];
 
 	// Execute
-	[_windowController release];
-	_windowController = nil;
-
-	// Verify
-	NSUInteger postRetainCount = [_mockLocationManager retainCount];
-	STAssertEquals(postRetainCount, preRetainCount - 1, nil);
+	[_windowController close];
 }
 
 @end

@@ -61,12 +61,16 @@
 
 - (void)dealloc
 {
-	[_locationManager stopUpdatingLocation];
 	[_locationManager release];
 	[_locationFormatter release];
 	[_workspace release];
 	
 	[super dealloc];
+}
+
+- (void)close
+{
+	[_locationManager stopUpdatingLocation];
 }
 
 - (void)windowDidLoad
