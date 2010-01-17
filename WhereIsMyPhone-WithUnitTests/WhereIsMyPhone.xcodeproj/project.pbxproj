@@ -38,7 +38,6 @@
 		C901D5A410DDE74A00E72C90 /* OCPartialMockObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C901D4DE10DDE38300E72C90 /* OCPartialMockObject.m */; };
 		C901D5A510DDE74A00E72C90 /* OCPartialMockRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = C901D4E010DDE38300E72C90 /* OCPartialMockRecorder.m */; };
 		C901D5A610DDE74A00E72C90 /* OCProtocolMockObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C901D4E210DDE38300E72C90 /* OCProtocolMockObject.m */; };
-		C907BD2B10DF394E0096B9A5 /* NSObject+SupersequentImplementation.m in Sources */ = {isa = PBXBuildFile; fileRef = C907BD2A10DF394E0096B9A5 /* NSObject+SupersequentImplementation.m */; };
 		C907BD9F10DF3C200096B9A5 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9849E4710DF248300411F31 /* CoreLocation.framework */; };
 		C907BDB010DF3C860096B9A5 /* WhereIsMyPhoneAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* WhereIsMyPhoneAppDelegate.m */; };
 		C907BDBA10DF3C910096B9A5 /* WhereIsMyPhoneViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C907BCFD10DF37740096B9A5 /* WhereIsMyPhoneViewControllerTests.m */; };
@@ -63,7 +62,6 @@
 		C97E754910E6EA8D00CB9E83 /* OCPartialMockObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C901D4DE10DDE38300E72C90 /* OCPartialMockObject.m */; };
 		C97E754A10E6EA8D00CB9E83 /* OCPartialMockRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = C901D4E010DDE38300E72C90 /* OCPartialMockRecorder.m */; };
 		C97E754B10E6EA8D00CB9E83 /* OCProtocolMockObject.m in Sources */ = {isa = PBXBuildFile; fileRef = C901D4E210DDE38300E72C90 /* OCProtocolMockObject.m */; };
-		C97E754C10E6EA8D00CB9E83 /* NSObject+SupersequentImplementation.m in Sources */ = {isa = PBXBuildFile; fileRef = C907BD2A10DF394E0096B9A5 /* NSObject+SupersequentImplementation.m */; };
 		C97E754D10E6EAA000CB9E83 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD733E0D9D9553002E5188 /* MainWindow.xib */; };
 		C97E754E10E6EAA000CB9E83 /* WhereIsMyPhoneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E5210DE3E06400AC0155 /* WhereIsMyPhoneViewController.xib */; };
 		C97E754F10E6EAA000CB9E83 /* HTMLFormatString.html in Resources */ = {isa = PBXBuildFile; fileRef = C9849E7E10DF255B00411F31 /* HTMLFormatString.html */; };
@@ -172,8 +170,6 @@
 		C901D53B10DDE48800E72C90 /* WhereIsMyPhoneAppDelegateTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WhereIsMyPhoneAppDelegateTests.m; path = Classes/WhereIsMyPhoneAppDelegateTests.m; sourceTree = "<group>"; };
 		C901D55B10DDE66D00E72C90 /* ApplicationTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ApplicationTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C907BCFD10DF37740096B9A5 /* WhereIsMyPhoneViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WhereIsMyPhoneViewControllerTests.m; path = Classes/WhereIsMyPhoneViewControllerTests.m; sourceTree = "<group>"; };
-		C907BD2910DF394E0096B9A5 /* NSObject+SupersequentImplementation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+SupersequentImplementation.h"; path = "Classes/NSObject+SupersequentImplementation.h"; sourceTree = "<group>"; };
-		C907BD2A10DF394E0096B9A5 /* NSObject+SupersequentImplementation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+SupersequentImplementation.m"; path = "Classes/NSObject+SupersequentImplementation.m"; sourceTree = "<group>"; };
 		C97E753210E6EA7C00CB9E83 /* LogicTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LogicTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C97E753310E6EA7C00CB9E83 /* LogicTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LogicTests-Info.plist"; sourceTree = "<group>"; };
 		C98499B210DEED8C00411F31 /* WhereIsMyPhoneTesting.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhereIsMyPhoneTesting.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -352,8 +348,6 @@
 			children = (
 				C901D53B10DDE48800E72C90 /* WhereIsMyPhoneAppDelegateTests.m */,
 				C907BCFD10DF37740096B9A5 /* WhereIsMyPhoneViewControllerTests.m */,
-				C907BD2910DF394E0096B9A5 /* NSObject+SupersequentImplementation.h */,
-				C907BD2A10DF394E0096B9A5 /* NSObject+SupersequentImplementation.m */,
 				C901D4AF10DDE35700E72C90 /* OCMock */,
 			);
 			name = Tests;
@@ -551,7 +545,6 @@
 				C901D5A410DDE74A00E72C90 /* OCPartialMockObject.m in Sources */,
 				C901D5A510DDE74A00E72C90 /* OCPartialMockRecorder.m in Sources */,
 				C901D5A610DDE74A00E72C90 /* OCProtocolMockObject.m in Sources */,
-				C907BD2B10DF394E0096B9A5 /* NSObject+SupersequentImplementation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -582,7 +575,6 @@
 				C97E754910E6EA8D00CB9E83 /* OCPartialMockObject.m in Sources */,
 				C97E754A10E6EA8D00CB9E83 /* OCPartialMockRecorder.m in Sources */,
 				C97E754B10E6EA8D00CB9E83 /* OCProtocolMockObject.m in Sources */,
-				C97E754C10E6EA8D00CB9E83 /* NSObject+SupersequentImplementation.m in Sources */,
 				55A1A03410F6FA690020688E /* CoreLocationFormatter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
