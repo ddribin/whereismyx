@@ -25,13 +25,13 @@ id mockViewController = nil;
 
 - (id)init
 {
-	if (mockViewController)
-	{
-		[self release];
-		return mockViewController;
-	}
-	
-	return invokeSupersequentNoArgs();
+    if (mockViewController)
+    {
+        [self release];
+        return mockViewController;
+    }
+    
+    return invokeSupersequentNoArgs();
 }
 
 @end
@@ -56,51 +56,51 @@ id mockViewController = nil;
 
 - (void)testApplicationDidFinishLaunching
 {
-	WhereIsMyPhoneAppDelegate *appDelegate =
-		[[[WhereIsMyPhoneAppDelegate alloc] init] autorelease];
+    WhereIsMyPhoneAppDelegate *appDelegate =
+        [[[WhereIsMyPhoneAppDelegate alloc] init] autorelease];
 
-	id mockView = [OCMockObject mockForClass:[UIView class]];
-	[[mockView expect] setFrame:CGRectMake(0, 20, 320, 460)];
+    id mockView = [OCMockObject mockForClass:[UIView class]];
+    [[mockView expect] setFrame:CGRectMake(0, 20, 320, 460)];
 
-	mockViewController = [OCMockObject mockForClass:[WhereIsMyPhoneViewController class]];
-	[[[mockViewController stub] andReturn:mockView] view];
+    mockViewController = [OCMockObject mockForClass:[WhereIsMyPhoneViewController class]];
+    [[[mockViewController stub] andReturn:mockView] view];
 
-	id mockWindow = [OCMockObject mockForClass:[UIWindow class]];
-	[[mockWindow expect] addSubview:mockView];
-	[[mockWindow expect] makeKeyAndVisible];
-	object_setInstanceVariable(appDelegate, "window", mockWindow);
-	
-	[appDelegate applicationDidFinishLaunching:nil];
-	
-	[mockViewController verify];
-	[mockView verify];
-	
-	id viewController;
-	object_getInstanceVariable(appDelegate, "viewController", (void **)&viewController);
-	STAssertEqualObjects(viewController, mockViewController,
-		@"viewController not set on appDelegate");
+    id mockWindow = [OCMockObject mockForClass:[UIWindow class]];
+    [[mockWindow expect] addSubview:mockView];
+    [[mockWindow expect] makeKeyAndVisible];
+    object_setInstanceVariable(appDelegate, "window", mockWindow);
+    
+    [appDelegate applicationDidFinishLaunching:nil];
+    
+    [mockViewController verify];
+    [mockView verify];
+    
+    id viewController;
+    object_getInstanceVariable(appDelegate, "viewController", (void **)&viewController);
+    STAssertEqualObjects(viewController, mockViewController,
+        @"viewController not set on appDelegate");
 
-	mockViewController = nil;	
+    mockViewController = nil;   
 }
 
 - (void)testApplicationWillTerminate
 {
-	WhereIsMyPhoneAppDelegate *appDelegate =
-		[[[WhereIsMyPhoneAppDelegate alloc] init] autorelease];
-	
-	id mockViewController = [OCMockObject mockForClass:[WhereIsMyPhoneAppDelegate class]];
-	NSUInteger preRetainCount = [mockViewController retainCount];
-	[mockViewController retain];
-	object_setInstanceVariable(appDelegate, "viewController", mockViewController);
-	
-	[appDelegate applicationWillTerminate:nil];
+    WhereIsMyPhoneAppDelegate *appDelegate =
+        [[[WhereIsMyPhoneAppDelegate alloc] init] autorelease];
+    
+    id mockViewController = [OCMockObject mockForClass:[WhereIsMyPhoneAppDelegate class]];
+    NSUInteger preRetainCount = [mockViewController retainCount];
+    [mockViewController retain];
+    object_setInstanceVariable(appDelegate, "viewController", mockViewController);
+    
+    [appDelegate applicationWillTerminate:nil];
 
-	NSUInteger postRetainCount = [mockViewController retainCount];
-	STAssertEquals(postRetainCount, preRetainCount, @"Window controller not released");
+    NSUInteger postRetainCount = [mockViewController retainCount];
+    STAssertEquals(postRetainCount, preRetainCount, @"Window controller not released");
 
-	id viewController;
-	object_getInstanceVariable(appDelegate, "viewController", (void **)&viewController);
-	STAssertNil(viewController, @"Window controller property not set to nil");
+    id viewController;
+    object_getInstanceVariable(appDelegate, "viewController", (void **)&viewController);
+    STAssertNil(viewController, @"Window controller property not set to nil");
 }
 
 @end
