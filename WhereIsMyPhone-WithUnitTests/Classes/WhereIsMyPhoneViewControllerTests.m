@@ -71,7 +71,7 @@
 		actionsForTarget:_viewController
 		forControlEvent:UIControlEventTouchUpInside];
 	
-	STAssertEqualObjects([actions objectAtIndex:0], @"openInDefaultBrowsers:",
+	STAssertEqualObjects([actions objectAtIndex:0], @"openInDefaultBrowser:",
 		nil);
 }
 

@@ -1,106 +1,87 @@
 //
-//  WhereIsMyPhoneAppDelegateTests.m
-//  WhereIsMyMac
+//	WhereIsMyPhoneAppDelegateTests.m
+//	WhereIsMyMac
 //
-//  Created by Matt Gallagher on 2009/12/19.
-//  Copyright 2009 Matt Gallagher. All rights reserved.
+//	Created by Matt Gallagher on 2009/12/19.
+//	Copyright 2009 Matt Gallagher. All rights reserved.
 //
-//  Permission is given to use this source code file, free of charge, in any
-//  project, commercial or otherwise, entirely at your risk, with the condition
-//  that any redistribution (in part or whole) of source code must retain
-//  this copyright and permission notice. Attribution in compiled projects is
-//  appreciated but not required.
+//	Permission is given to use this source code file, free of charge, in any
+//	project, commercial or otherwise, entirely at your risk, with the condition
+//	that any redistribution (in part or whole) of source code must retain
+//	this copyright and permission notice. Attribution in compiled projects is
+//	appreciated but not required.
 //
 
 #import <SenTestingKit/SenTestingKit.h>
 #import <OCMock/OCMock.h>
 #import "WhereIsMyPhoneAppDelegate.h"
 #import "WhereIsMyPhoneViewController.h"
-#import <objc/runtime.h>
-#import "NSObject+SupersequentImplementation.h"
 
-id mockViewController = nil;
-
-@implementation WhereIsMyPhoneViewController (WhereIsMyPhoneAppDelegateTests)
-
-- (id)init
-{
-    if (mockViewController)
-    {
-        [self release];
-        return mockViewController;
-    }
-    
-    return invokeSupersequentNoArgs();
-}
-
-@end
 
 @interface WhereIsMyPhoneAppDelegateTests : SenTestCase 
 {
+	id _mockViewController;
+	WhereIsMyPhoneAppDelegate * _appDelegate;
 }
 
 @end
 
 @implementation WhereIsMyPhoneAppDelegateTests
 
+- (void)setUp
+{
+	_mockViewController = [OCMockObject mockForClass:[WhereIsMyPhoneViewController class]];
+	_appDelegate = [[[WhereIsMyPhoneAppDelegate alloc] init] autorelease];
+	_appDelegate.viewController = _mockViewController;
+}
+
+- (void)tearDown
+{
+	[_mockViewController verify];
+}
+
 #ifdef APPLICATION_TESTS
 
 - (void)testAppDelegate
 {
-   id appDelegate = [[UIApplication sharedApplication] delegate];
-   STAssertNotNil(appDelegate, @"Cannot find the application delegate.");
+	id appDelegate = [[UIApplication sharedApplication] delegate];
+	STAssertNotNil(appDelegate, nil);
 }
 
 #endif
 
-- (void)testApplicationDidFinishLaunching
+- (void)testApplicationDidFinishLaunchingShowsWindow
 {
-    WhereIsMyPhoneAppDelegate *appDelegate =
-        [[[WhereIsMyPhoneAppDelegate alloc] init] autorelease];
+	// Setup
+	id mockView = [OCMockObject mockForClass:[UIView class]];
+	[[[_mockViewController stub] andReturn:mockView] view];
+	id mockWindow = [OCMockObject mockForClass:[UIWindow class]];
+	_appDelegate.window = mockWindow;
 
-    id mockView = [OCMockObject mockForClass:[UIView class]];
-    [[mockView expect] setFrame:CGRectMake(0, 20, 320, 460)];
+	[[mockView expect] setFrame:CGRectMake(0, 20, 320, 460)];
+	[[mockWindow expect] addSubview:mockView];
+	[[mockWindow expect] makeKeyAndVisible];
+	
+	// Execute
+	[_appDelegate applicationDidFinishLaunching:nil];
 
-    mockViewController = [OCMockObject mockForClass:[WhereIsMyPhoneViewController class]];
-    [[[mockViewController stub] andReturn:mockView] view];
-
-    id mockWindow = [OCMockObject mockForClass:[UIWindow class]];
-    [[mockWindow expect] addSubview:mockView];
-    [[mockWindow expect] makeKeyAndVisible];
-    object_setInstanceVariable(appDelegate, "window", mockWindow);
-    
-    [appDelegate applicationDidFinishLaunching:nil];
-    
-    [mockViewController verify];
-    [mockView verify];
-    
-    id viewController;
-    object_getInstanceVariable(appDelegate, "viewController", (void **)&viewController);
-    STAssertEqualObjects(viewController, mockViewController,
-        @"viewController not set on appDelegate");
-
-    mockViewController = nil;   
+	// Verify
+	[mockView verify];
+	[mockWindow verify];
 }
 
-- (void)testApplicationWillTerminate
+- (void)testApplicationWillTerminateNilsOutOutlets
 {
-    WhereIsMyPhoneAppDelegate *appDelegate =
-        [[[WhereIsMyPhoneAppDelegate alloc] init] autorelease];
-    
-    id mockViewController = [OCMockObject mockForClass:[WhereIsMyPhoneAppDelegate class]];
-    NSUInteger preRetainCount = [mockViewController retainCount];
-    [mockViewController retain];
-    object_setInstanceVariable(appDelegate, "viewController", mockViewController);
-    
-    [appDelegate applicationWillTerminate:nil];
-
-    NSUInteger postRetainCount = [mockViewController retainCount];
-    STAssertEquals(postRetainCount, preRetainCount, @"Window controller not released");
-
-    id viewController;
-    object_getInstanceVariable(appDelegate, "viewController", (void **)&viewController);
-    STAssertNil(viewController, @"Window controller property not set to nil");
+	// Setup
+	id mockWindow = [OCMockObject mockForClass:[UIWindow class]];
+	_appDelegate.window = mockWindow;
+	
+	// Execute
+	[_appDelegate applicationWillTerminate:nil];
+	
+	// Verify
+	STAssertNil(_appDelegate.viewController, nil);
+	STAssertNil(_appDelegate.window, nil);
 }
 
 @end

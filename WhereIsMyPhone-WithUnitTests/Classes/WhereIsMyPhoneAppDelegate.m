@@ -20,12 +20,28 @@
 @synthesize window;
 @synthesize viewController;
 
+- (id)init
+{
+	self = [super init];
+	if (self == nil)
+		return nil;
+	
+	viewController = [[WhereIsMyPhoneViewController alloc] init];
+	
+	return self;
+}
+
+- (void)dealloc
+{
+    [window release];
+    [viewController release];
+    
+    [super dealloc];
+}
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {    
     
-    // Override point for customization after app launch
-	self.viewController = [[[WhereIsMyPhoneViewController alloc] init] autorelease];
-	viewController.view.frame = CGRectMake(0, 20, 320, 460);
+    viewController.view.frame = CGRectMake(0, 20, 320, 460);
 
     [window addSubview:viewController.view];
     [window makeKeyAndVisible];
@@ -34,7 +50,7 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     self.viewController = nil;
-	self.window = nil;
+    self.window = nil;
 }
 
 
