@@ -17,19 +17,67 @@
 
 @implementation WhereIsMyPhoneViewController
 
+@synthesize webView;
+@synthesize locationLabel;
+@synthesize accuracyLabel;
+@synthesize openInBrowserButton;
+
+- (id)init
+{
+    CLLocationManager * locationManager = [[[CLLocationManager alloc] init] autorelease];
+	
+    NSString * formatString = [NSString 
+                               stringWithContentsOfFile:
+                               [[NSBundle bundleForClass:[self class]]
+                                pathForResource:@"HTMLFormatString" ofType:@"html"]
+                               encoding:NSUTF8StringEncoding
+                               error:NULL];
+    CoreLocationFormatter * locationFormatter =
+	[[[CoreLocationFormatter alloc] initWithDelegate:self
+										formatString:formatString] autorelease];
+    return [self initWithLocationManager:locationManager
+                       locationFormatter:locationFormatter
+							 application:[UIApplication sharedApplication]];
+}
+
+- (id)initWithLocationManager:(CLLocationManager *)locationManager
+            locationFormatter:(CoreLocationFormatter *)locationFormatter
+				  application:(UIApplication *)application;
+{
+    self = [super init];
+    if (self == nil)
+        return nil;
+    
+    _locationManager = [locationManager retain];
+    _locationFormatter = [locationFormatter retain];
+    _application = [application retain];
+    
+    return self;
+}
+
+- (void)dealloc
+{
+	[webView release];
+	[locationLabel release];
+	[accuracyLabel release];
+	[openInBrowserButton release];
+	
+	[_locationManager release];
+	[_locationFormatter release];
+	[_application release];
+	
+	[super dealloc];
+}
+
 - (void)viewDidLoad
 {
-	NSString * formatString = [NSString 
-							   stringWithContentsOfFile:
-							   [[NSBundle bundleForClass:[self class]]
-								pathForResource:@"HTMLFormatString" ofType:@"html"]
-							   encoding:NSUTF8StringEncoding
-							   error:NULL];
-	locationFormatter = [[CoreLocationFormatter alloc] initWithDelegate:self formatString:formatString];
+	_locationManager.delegate = _locationFormatter;
+	[_locationManager startUpdatingLocation];
+}
 
-	locationManager = [[CLLocationManager alloc] init];
-	locationManager.delegate = locationFormatter;
-	[locationManager startUpdatingLocation];
+- (void)viewDidUnload
+{
+	[_locationManager stopUpdatingLocation];
 }
 
 - (NSString *)nibName
@@ -39,28 +87,20 @@
 
 - (IBAction)openInDefaultBrowser:(id)sender
 {
-	CLLocation *currentLocation = locationManager.location;
-	NSURL *externalBrowserURL = [locationFormatter googleMapsUrlForLocation:currentLocation];
-	[[UIApplication sharedApplication] openURL:externalBrowserURL];
+	CLLocation *currentLocation = _locationManager.location;
+	NSURL *externalBrowserURL = [_locationFormatter googleMapsUrlForLocation:currentLocation];
+	[_application openURL:externalBrowserURL];
 }
 
 - (void)locationFormatter:(CoreLocationFormatter *)formatter
  didUpdateFormattedString:(NSString *)formattedString_
 			locationLabel:(NSString *)locationLabel_
-		   accuractyLabel:(NSString *)accuracyLabel_;
+			accuracyLabel:(NSString *)accuracyLabel_;
 {
 	// Load the HTML in the WebView and set the labels
 	[webView loadHTMLString:formattedString_ baseURL:nil];
 	[locationLabel setText:locationLabel_];
 	[accuracyLabel setText:accuracyLabel_];
-}
-
-- (void)dealloc
-{
-	[locationManager stopUpdatingLocation];
-	[locationManager release];
-	
-	[super dealloc];
 }
 
 @end

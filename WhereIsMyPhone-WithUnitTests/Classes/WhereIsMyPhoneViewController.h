@@ -18,18 +18,30 @@
 
 @interface WhereIsMyPhoneViewController : UIViewController <CoreLocationFormatterDelegate>
 {
-	IBOutlet UIWebView *webView;
-	CLLocationManager *locationManager;
-	IBOutlet UILabel *locationLabel;
-	IBOutlet UILabel *accuracyLabel;
-	IBOutlet UIButton *openInBrowserButton;
-	CoreLocationFormatter *locationFormatter;
+	UIWebView *webView;
+	UILabel *locationLabel;
+	UILabel *accuracyLabel;
+	UIButton *openInBrowserButton;
+	
+	CLLocationManager * _locationManager;
+	CoreLocationFormatter * _locationFormatter;
+	UIApplication * _application;
 }
+
+@property (nonatomic, retain) IBOutlet UIWebView *webView;
+@property (nonatomic, retain) IBOutlet UILabel *locationLabel;
+@property (nonatomic, retain) IBOutlet UILabel *accuracyLabel;
+@property (nonatomic, retain) IBOutlet UIButton *openInBrowserButton;
+
+- (id)init;
+- (id)initWithLocationManager:(CLLocationManager *)locationManager
+            locationFormatter:(CoreLocationFormatter *)locationFormatter
+				  application:(UIApplication *)application;
 
 - (void)locationFormatter:(CoreLocationFormatter *)formatter
  didUpdateFormattedString:(NSString *)formattedString
 			locationLabel:(NSString *)locationLabel
-		   accuractyLabel:(NSString *)accuracyLabel;
+			accuracyLabel:(NSString *)accuracyLabel;
 
 - (IBAction)openInDefaultBrowser:(id)sender;
 
