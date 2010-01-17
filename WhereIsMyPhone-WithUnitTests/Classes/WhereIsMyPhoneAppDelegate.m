@@ -22,13 +22,13 @@
 
 - (id)init
 {
-	self = [super init];
-	if (self == nil)
-		return nil;
-	
-	viewController = [[WhereIsMyPhoneViewController alloc] init];
-	
-	return self;
+    self = [super init];
+    if (self == nil)
+        return nil;
+    
+    viewController = [[WhereIsMyPhoneViewController alloc] init];
+    
+    return self;
 }
 
 - (void)dealloc
