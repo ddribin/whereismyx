@@ -88,6 +88,27 @@
     [_windowController windowDidLoad];
 }
 
+- (void)testCloseStopsLocationManager
+{
+    // Setup
+    [[_mockLocationManager expect] stopUpdatingLocation];
+	
+    // Execute
+    [_windowController close];
+}
+
+- (void)testOpenInDefaultBrowserActionOpensGoogleMapsUrlInWorkspace
+{
+    // Setup
+    [[[_mockLocationManager stub] andReturn:nil] location];
+    NSURL * dummyUrl = [NSURL URLWithString:@"http://example.com/"];
+    [[[_mockLocationFormatter stub] andReturn:dummyUrl] googleMapsUrlForLocation:nil];
+    [[_mockWorkspace expect] openURL:dummyUrl];
+    
+    // Execute
+    [_windowController openInDefaultBrowser:nil];
+}
+
 - (void)testLocationFormatterDelegateUpdatesUI
 {
     // Setup
@@ -115,27 +136,6 @@
     [mockWebFrame verify];
     [mockLocationLabel verify];
     [mockAccuracyLabel verify];
-}
-
-- (void)testOpenInDefaultBrowserActionOpensGoogleMapsUrlInWorkspace
-{
-    // Setup
-    [[[_mockLocationManager stub] andReturn:nil] location];
-    NSURL * dummyUrl = [NSURL URLWithString:@"http://example.com/"];
-    [[[_mockLocationFormatter stub] andReturn:dummyUrl] googleMapsUrlForLocation:nil];
-    [[_mockWorkspace expect] openURL:dummyUrl];
-    
-    // Execute
-    [_windowController openInDefaultBrowser:nil];
-}
-
-- (void)testCloseStopsLocationManager
-{
-    // Setup
-    [[_mockLocationManager expect] stopUpdatingLocation];
-
-    // Execute
-    [_windowController close];
 }
 
 @end
