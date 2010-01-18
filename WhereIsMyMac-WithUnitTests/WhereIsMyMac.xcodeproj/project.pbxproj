@@ -129,7 +129,7 @@
 			);
 			path = Classes;
 			sourceTree = "<group>";
-			usesTabs = 1;
+			usesTabs = 0;
 		};
 		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
@@ -216,7 +216,7 @@
 			name = Tests;
 			path = Classes;
 			sourceTree = "<group>";
-			usesTabs = 1;
+			usesTabs = 0;
 		};
 /* End PBXGroup section */
 

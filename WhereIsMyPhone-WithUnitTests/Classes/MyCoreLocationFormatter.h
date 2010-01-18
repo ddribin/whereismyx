@@ -8,7 +8,7 @@
 - (void)locationFormatter:(MyCoreLocationFormatter *)formatter
  didUpdateFormattedString:(NSString *)formattedString
             locationLabel:(NSString *)locationLabel
-			accuracyLabel:(NSString *)accuracyLabel;
+            accuracyLabel:(NSString *)accuracyLabel;
 
 @end
 
