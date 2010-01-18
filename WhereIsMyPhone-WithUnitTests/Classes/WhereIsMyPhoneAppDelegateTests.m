@@ -44,7 +44,10 @@
 
 - (void)testAppDelegate
 {
+    // Execute
     id appDelegate = [[UIApplication sharedApplication] delegate];
+    
+    // Verify
     STAssertNotNil(appDelegate, nil);
 }
 

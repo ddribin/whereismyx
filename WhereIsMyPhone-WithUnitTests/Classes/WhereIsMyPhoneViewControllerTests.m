@@ -25,7 +25,7 @@
     id _mockLocationManager;
     id _mockLocationFormatter;
     id _mockApplication;
-	WhereIsMyPhoneViewController * _viewController;
+    WhereIsMyPhoneViewController * _viewController;
 }
 
 @end
@@ -38,51 +38,53 @@
     _mockLocationManager = [OCMockObject mockForClass:[CLLocationManager class]];
     _mockLocationFormatter = [OCMockObject mockForClass:[CoreLocationFormatter class]];
     _mockApplication = [OCMockObject mockForClass:[UIApplication class]];
-	_viewController = [[WhereIsMyPhoneViewController alloc]
-					   initWithLocationManager:_mockLocationManager
-					   locationFormatter:_mockLocationFormatter
-					   application:_mockApplication];
+    _viewController = [[WhereIsMyPhoneViewController alloc]
+                       initWithLocationManager:_mockLocationManager
+                       locationFormatter:_mockLocationFormatter
+                       application:_mockApplication];
 }
 
 - (void)tearDown
 {
-	// Verify
-	[_mockLocationManager verify];
-	[_mockLocationFormatter verify];
-	[_mockApplication verify];
-	
-	// Teardown
-	[_viewController release];
+    // Verify
+    [_mockLocationManager verify];
+    [_mockLocationFormatter verify];
+    [_mockApplication verify];
+    
+    // Teardown
+    [_viewController release];
 }
 
 #if APPLICATION_TESTS
 
 - (void)testLoadView
 {
-	[_viewController loadView];
+    // Execute
+    [_viewController loadView];
 
-	STAssertTrue([_viewController isViewLoaded], nil);
-	STAssertNotNil(_viewController.webView, nil);
-	STAssertNotNil(_viewController.locationLabel, nil);
-	STAssertNotNil(_viewController.accuracyLabel, nil);
-	STAssertNotNil(_viewController.openInBrowserButton, nil);
-	
-	NSArray *actions = [_viewController.openInBrowserButton
-		actionsForTarget:_viewController
-		forControlEvent:UIControlEventTouchUpInside];
-	
-	STAssertEqualObjects([actions objectAtIndex:0], @"openInDefaultBrowser:",
-		nil);
+    // Verify
+    STAssertTrue([_viewController isViewLoaded], nil);
+    STAssertNotNil(_viewController.webView, nil);
+    STAssertNotNil(_viewController.locationLabel, nil);
+    STAssertNotNil(_viewController.accuracyLabel, nil);
+    STAssertNotNil(_viewController.openInBrowserButton, nil);
+    
+    NSArray *actions = [_viewController.openInBrowserButton
+        actionsForTarget:_viewController
+        forControlEvent:UIControlEventTouchUpInside];
+    
+    STAssertEqualObjects([actions objectAtIndex:0], @"openInDefaultBrowser:",
+        nil);
 }
 
 #endif
 
 - (void)testViewDidLoadStartsLocationManager
 {
-	// Setup
+    // Setup
     [[_mockLocationManager expect] setDelegate:_mockLocationFormatter];
     [[_mockLocationManager expect] startUpdatingLocation];
-	
+    
     // Execute
     [_viewController viewDidLoad];
 }
@@ -91,7 +93,7 @@
 {
     // Setup
     [[_mockLocationManager expect] stopUpdatingLocation];
-	
+    
     // Execute
     [_viewController viewDidUnload];
 }
@@ -125,9 +127,9 @@
     
     // Execute
     [_viewController locationFormatter:_mockLocationFormatter
-			  didUpdateFormattedString:@"html string"
-						 locationLabel:@"location"
-						 accuracyLabel:@"accuracy"];
+              didUpdateFormattedString:@"html string"
+                         locationLabel:@"location"
+                         accuracyLabel:@"accuracy"];
     
     // Verify
     [mockWebView verify];
