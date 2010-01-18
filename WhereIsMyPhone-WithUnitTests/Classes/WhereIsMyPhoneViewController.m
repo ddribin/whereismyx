@@ -13,7 +13,7 @@
 //
 
 #import "WhereIsMyPhoneViewController.h"
-#import "CoreLocationFormatter.h"
+#import "MyCoreLocationFormatter.h"
 
 @implementation WhereIsMyPhoneViewController
 
@@ -32,8 +32,8 @@
                                 pathForResource:@"HTMLFormatString" ofType:@"html"]
                                encoding:NSUTF8StringEncoding
                                error:NULL];
-    CoreLocationFormatter * locationFormatter =
-    [[[CoreLocationFormatter alloc] initWithDelegate:self
+    MyCoreLocationFormatter * locationFormatter =
+    [[[MyCoreLocationFormatter alloc] initWithDelegate:self
                                         formatString:formatString] autorelease];
     return [self initWithLocationManager:locationManager
                        locationFormatter:locationFormatter
@@ -41,7 +41,7 @@
 }
 
 - (id)initWithLocationManager:(CLLocationManager *)locationManager
-            locationFormatter:(CoreLocationFormatter *)locationFormatter
+            locationFormatter:(MyCoreLocationFormatter *)locationFormatter
                   application:(UIApplication *)application;
 {
     self = [super init];
@@ -92,15 +92,15 @@
     [_application openURL:externalBrowserURL];
 }
 
-- (void)locationFormatter:(CoreLocationFormatter *)formatter
- didUpdateFormattedString:(NSString *)formattedString_
-            locationLabel:(NSString *)locationLabel_
-            accuracyLabel:(NSString *)accuracyLabel_;
+- (void)locationFormatter:(MyCoreLocationFormatter *)formatter
+ didUpdateFormattedString:(NSString *)aFormattedString
+            locationLabel:(NSString *)aLocationLabel
+            accuracyLabel:(NSString *)anAccuracyLabel;
 {
     // Load the HTML in the WebView and set the labels
-    [webView loadHTMLString:formattedString_ baseURL:nil];
-    [locationLabel setText:locationLabel_];
-    [accuracyLabel setText:accuracyLabel_];
+    [webView loadHTMLString:aFormattedString baseURL:nil];
+    [locationLabel setText:aLocationLabel];
+    [accuracyLabel setText:anAccuracyLabel];
 }
 
 @end

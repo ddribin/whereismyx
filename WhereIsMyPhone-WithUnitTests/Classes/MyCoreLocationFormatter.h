@@ -1,27 +1,27 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 
-@class CoreLocationFormatter;
+@class MyCoreLocationFormatter;
 
-@protocol CoreLocationFormatterDelegate <NSObject>
+@protocol MyCoreLocationFormatterDelegate <NSObject>
 
-- (void)locationFormatter:(CoreLocationFormatter *)formatter
+- (void)locationFormatter:(MyCoreLocationFormatter *)formatter
  didUpdateFormattedString:(NSString *)formattedString
             locationLabel:(NSString *)locationLabel
 			accuracyLabel:(NSString *)accuracyLabel;
 
 @end
 
-@interface CoreLocationFormatter : NSObject <CLLocationManagerDelegate>
+@interface MyCoreLocationFormatter : NSObject <CLLocationManagerDelegate>
 {
-    id<CoreLocationFormatterDelegate> _delegate;
+    id<MyCoreLocationFormatterDelegate> _delegate;
     NSString * _formatString;
 }
 
-@property (nonatomic, assign, readwrite) id<CoreLocationFormatterDelegate> delegate;
+@property (nonatomic, assign, readwrite) id<MyCoreLocationFormatterDelegate> delegate;
 @property (nonatomic, copy, readonly) NSString * formatString;
 
-- (id)initWithDelegate:(id<CoreLocationFormatterDelegate>)delegate
+- (id)initWithDelegate:(id<MyCoreLocationFormatterDelegate>)delegate
           formatString:(NSString *)htmlFormatString;
 
 - (NSURL *)googleMapsUrlForLocation:(CLLocation *)currentLocation;

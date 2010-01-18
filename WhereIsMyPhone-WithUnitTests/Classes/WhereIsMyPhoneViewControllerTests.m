@@ -36,7 +36,7 @@
 {
     // Setup
     _mockLocationManager = [OCMockObject mockForClass:[CLLocationManager class]];
-    _mockLocationFormatter = [OCMockObject mockForClass:[CoreLocationFormatter class]];
+    _mockLocationFormatter = [OCMockObject mockForClass:[MyCoreLocationFormatter class]];
     _mockApplication = [OCMockObject mockForClass:[UIApplication class]];
     _viewController = [[WhereIsMyPhoneViewController alloc]
                        initWithLocationManager:_mockLocationManager
