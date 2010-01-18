@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1DDD58160DA1D0A300B32029 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1DDD58140DA1D0A300B32029 /* MainMenu.xib */; };
-		55A19EC710F6E5F50020688E /* CoreLocationFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 55A19EC610F6E5F50020688E /* CoreLocationFormatter.m */; };
-		55A19EF110F6EA6B0020688E /* CoreLocationFormatterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 55A19EF010F6EA6B0020688E /* CoreLocationFormatterTest.m */; };
+		55A19EC710F6E5F50020688E /* MyCoreLocationFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 55A19EC610F6E5F50020688E /* MyCoreLocationFormatter.m */; };
+		55A19EF110F6EA6B0020688E /* MyCoreLocationFormatterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 55A19EF010F6EA6B0020688E /* MyCoreLocationFormatterTests.m */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -71,9 +71,9 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
-		55A19EC510F6E5F50020688E /* CoreLocationFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreLocationFormatter.h; sourceTree = "<group>"; };
-		55A19EC610F6E5F50020688E /* CoreLocationFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreLocationFormatter.m; sourceTree = "<group>"; };
-		55A19EF010F6EA6B0020688E /* CoreLocationFormatterTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreLocationFormatterTest.m; sourceTree = "<group>"; };
+		55A19EC510F6E5F50020688E /* MyCoreLocationFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyCoreLocationFormatter.h; sourceTree = "<group>"; };
+		55A19EC610F6E5F50020688E /* MyCoreLocationFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCoreLocationFormatter.m; sourceTree = "<group>"; };
+		55A19EF010F6EA6B0020688E /* MyCoreLocationFormatterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyCoreLocationFormatterTests.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* WhereIsMyMac-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "WhereIsMyMac-Info.plist"; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* WhereIsMyMac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhereIsMyMac.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C90E7AEC10DC747500CCE376 /* WhereIsMyMacAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WhereIsMyMacAppDelegate.h; sourceTree = "<group>"; };
@@ -124,8 +124,8 @@
 				C90E7AED10DC747500CCE376 /* WhereIsMyMacAppDelegate.m */,
 				C90E7AEE10DC747500CCE376 /* WhereIsMyMacWindowController.h */,
 				C90E7AEF10DC747500CCE376 /* WhereIsMyMacWindowController.m */,
-				55A19EC510F6E5F50020688E /* CoreLocationFormatter.h */,
-				55A19EC610F6E5F50020688E /* CoreLocationFormatter.m */,
+				55A19EC510F6E5F50020688E /* MyCoreLocationFormatter.h */,
+				55A19EC610F6E5F50020688E /* MyCoreLocationFormatter.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -211,7 +211,7 @@
 			children = (
 				C90E7AF210DC747F00CCE376 /* WhereIsMyMacAppDelegateTests.m */,
 				C968AC6210DC984B00F35B40 /* WhereIsMyMacWindowControllerTests.m */,
-				55A19EF010F6EA6B0020688E /* CoreLocationFormatterTest.m */,
+				55A19EF010F6EA6B0020688E /* MyCoreLocationFormatterTests.m */,
 			);
 			name = Tests;
 			path = Classes;
@@ -324,7 +324,7 @@
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				C90E7AF010DC747500CCE376 /* WhereIsMyMacAppDelegate.m in Sources */,
 				C90E7AF110DC747500CCE376 /* WhereIsMyMacWindowController.m in Sources */,
-				55A19EC710F6E5F50020688E /* CoreLocationFormatter.m in Sources */,
+				55A19EC710F6E5F50020688E /* MyCoreLocationFormatter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,7 +334,7 @@
 			files = (
 				C90E7AFF10DC74D100CCE376 /* WhereIsMyMacAppDelegateTests.m in Sources */,
 				C968AC7710DC9A4F00F35B40 /* WhereIsMyMacWindowControllerTests.m in Sources */,
-				55A19EF110F6EA6B0020688E /* CoreLocationFormatterTest.m in Sources */,
+				55A19EF110F6EA6B0020688E /* MyCoreLocationFormatterTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

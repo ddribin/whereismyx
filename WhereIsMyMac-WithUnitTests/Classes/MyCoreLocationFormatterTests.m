@@ -1,17 +1,17 @@
-#import "CoreLocationFormatter.h"
+#import "MyCoreLocationFormatter.h"
 
 #import <SenTestingKit/SenTestingKit.h>
 #import <OCMock/OCMock.h>
 
 
-@interface CoreLocationFormatterTest : SenTestCase
+@interface MyCoreLocationFormatterTests : SenTestCase
 {
     id _mockDelegate;
-    CoreLocationFormatter * _formatter;
+    MyCoreLocationFormatter * _formatter;
 }
 @end
 
-@implementation CoreLocationFormatterTest
+@implementation MyCoreLocationFormatterTests
 
 #pragma mark -
 #pragma mark Helpers
@@ -48,8 +48,8 @@
 - (void)setUp
 {
     // Setup
-    _mockDelegate = [OCMockObject mockForProtocol:@protocol(CoreLocationFormatterDelegate)];
-    _formatter = [[CoreLocationFormatter alloc] initWithDelegate:_mockDelegate
+    _mockDelegate = [OCMockObject mockForProtocol:@protocol(MyCoreLocationFormatterDelegate)];
+    _formatter = [[MyCoreLocationFormatter alloc] initWithDelegate:_mockDelegate
                                                     formatString:@"ll=%f,%f spn=%f,%f"];
 }
 

@@ -1,12 +1,12 @@
-#import "CoreLocationFormatter.h"
+#import "MyCoreLocationFormatter.h"
 
 
-@interface CoreLocationFormatter ()
+@interface MyCoreLocationFormatter ()
 + (double)latitudeRangeForLocation:(CLLocation *)aLocation;
 + (double)longitudeRangeForLocation:(CLLocation *)aLocation;
 @end
 
-@implementation CoreLocationFormatter
+@implementation MyCoreLocationFormatter
 
 @synthesize delegate = _delegate;
 @synthesize formatString = _formatString;
@@ -29,7 +29,7 @@
     return latitudeRange * cos(aLocation.coordinate.latitude * M_PI / 180.0);
 }
 
-- (id)initWithDelegate:(id<CoreLocationFormatterDelegate>)delegate
+- (id)initWithDelegate:(id<MyCoreLocationFormatterDelegate>)delegate
           formatString:(NSString *)htmlFormatString;
 {
     self = [super init];

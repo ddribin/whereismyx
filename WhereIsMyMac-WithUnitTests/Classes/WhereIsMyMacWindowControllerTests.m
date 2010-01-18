@@ -39,7 +39,7 @@
 {
     // Setup
     _mockLocationManager = [OCMockObject mockForClass:[CLLocationManager class]];
-    _mockLocationFormatter = [OCMockObject mockForClass:[CoreLocationFormatter class]];
+    _mockLocationFormatter = [OCMockObject mockForClass:[MyCoreLocationFormatter class]];
     _mockWorkspace = [OCMockObject mockForClass:[NSWorkspace class]];
     _windowController = [[WhereIsMyMacWindowController alloc]
                          initWithLocationManager:_mockLocationManager

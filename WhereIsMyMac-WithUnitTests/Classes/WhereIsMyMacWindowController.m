@@ -13,7 +13,7 @@
 //
 
 #import "WhereIsMyMacWindowController.h"
-#import "CoreLocationFormatter.h"
+#import "MyCoreLocationFormatter.h"
 
 
 @implementation WhereIsMyMacWindowController
@@ -33,16 +33,16 @@
                                 pathForResource:@"HTMLFormatString" ofType:@"html"]
                                encoding:NSUTF8StringEncoding
                                error:NULL];
-    CoreLocationFormatter * locationFormatter =
-        [[[CoreLocationFormatter alloc] initWithDelegate:self
-                                            formatString:formatString] autorelease];
+    MyCoreLocationFormatter * locationFormatter =
+		[[[MyCoreLocationFormatter alloc] initWithDelegate:self
+											  formatString:formatString] autorelease];
     return [self initWithLocationManager:locationManager
                        locationFormatter:locationFormatter
                                workspace:[NSWorkspace sharedWorkspace]];
 }
 
 - (id)initWithLocationManager:(CLLocationManager *)locationManager
-            locationFormatter:(CoreLocationFormatter *)locationFormatter
+            locationFormatter:(MyCoreLocationFormatter *)locationFormatter
                     workspace:(NSWorkspace *)workspace;
 {
     self = [super init];
@@ -90,14 +90,14 @@
     [_workspace openURL:externalBrowserURL];
 }
 
-- (void)locationFormatter:(CoreLocationFormatter *)formatter
- didUpdateFormattedString:(NSString *)formattedString_
-            locationLabel:(NSString *)locationLabel_
-           accuracyLabel	:(NSString *)accuracyLabel_;
+- (void)locationFormatter:(MyCoreLocationFormatter *)formatter
+ didUpdateFormattedString:(NSString *)aFormattedString
+            locationLabel:(NSString *)aLocationLabel
+			accuracyLabel:(NSString *)anAccuracyLabel;
 {
-    [[webView mainFrame] loadHTMLString:formattedString_ baseURL:nil];
-    [locationLabel setStringValue:locationLabel_];
-    [accuracyLabel setStringValue:accuracyLabel_];
+    [[webView mainFrame] loadHTMLString:aFormattedString baseURL:nil];
+    [locationLabel setStringValue:aLocationLabel];
+    [accuracyLabel setStringValue:anAccuracyLabel];
 }
 
 @end

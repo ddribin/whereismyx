@@ -15,9 +15,9 @@
 #import <Cocoa/Cocoa.h>
 #import <WebKit/WebKit.h>
 #import <CoreLocation/CoreLocation.h>
-#import "CoreLocationFormatter.h"
+#import "MyCoreLocationFormatter.h"
 
-@interface WhereIsMyMacWindowController : NSWindowController <CoreLocationFormatterDelegate>
+@interface WhereIsMyMacWindowController : NSWindowController <MyCoreLocationFormatterDelegate>
 {
     WebView *webView;
     NSTextField *locationLabel;
@@ -25,7 +25,7 @@
     NSButton *openInBrowserButton;
     
     CLLocationManager * _locationManager;
-    CoreLocationFormatter * _locationFormatter;
+    MyCoreLocationFormatter * _locationFormatter;
     NSWorkspace * _workspace;
 }
 
@@ -35,13 +35,15 @@
 @property (assign) IBOutlet NSButton *openInBrowserButton;
 
 - (id)init;
+
+// Designated Initializer
 - (id)initWithLocationManager:(CLLocationManager *)locationManager
-            locationFormatter:(CoreLocationFormatter *)locationFormatter
+            locationFormatter:(MyCoreLocationFormatter *)locationFormatter
                     workspace:(NSWorkspace *)workspace;
 
 - (IBAction)openInDefaultBrowser:(id)sender;
 
-- (void)locationFormatter:(CoreLocationFormatter *)formatter
+- (void)locationFormatter:(MyCoreLocationFormatter *)formatter
  didUpdateFormattedString:(NSString *)formattedString
             locationLabel:(NSString *)locationLabel
 			accuracyLabel:(NSString *)accuracyLabel;
