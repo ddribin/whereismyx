@@ -65,10 +65,9 @@
     [super dealloc];
 }
 
-- (void)close
+- (NSString *)windowNibName
 {
-    [_locationManager stopUpdatingLocation];
-	[super close];
+    return @"WhereIsMyMacWindow";
 }
 
 - (void)windowDidLoad
@@ -77,9 +76,10 @@
     [_locationManager startUpdatingLocation];
 }
 
-- (NSString *)windowNibName
+- (void)close
 {
-    return @"WhereIsMyMacWindow";
+    [_locationManager stopUpdatingLocation];
+	[super close];
 }
 
 - (IBAction)openInDefaultBrowser:(id)sender
